@@ -60,23 +60,56 @@ function showTickets(series)
         name.id = "name";
         ticket.appendChild(name);
 
-        var div1 = document.createElement("div")
+        var value = document.createElement("coolfont")
+        value.className = "padded";
+        value.textContent = "value: " + data.value;
+        value.id = "value";
+        ticket.appendChild(value);
+
+        var quantity = document.createElement("coolfont")
+        quantity.className = "padded";
+        quantity.textContent = "quantity: " + data.quantity;
+        quantity.id = "quantity";
+        quantity.title = "* amount made"
+        ticket.appendChild(quantity);
+
+        var trueA = data.deployed;
+        if (series_data["available"] == false)
+            trueA = false;
+
+        var available = document.createElement("coolfont")
+        available.className = "padded";
+        available.textContent = "available: " + (trueA ? "yes" : "no");
+        available.id = "available";
+        available.title = "* is this ticket still available?"
+        ticket.appendChild(available);
+        
+
+        var div1 = document.createElement("div");
         ticket.appendChild(div1);
 
-        var img = document.createElement("img")
+        var img = document.createElement("img");
         img.src = data.image;
         img.width = 500;
         ticket.appendChild(img);
 
-        var container = document.getElementById("tickets")
+        // var div2 = document.createElement("div")
+        // ticket.appendChild(div2);
+
+        var container = document.getElementById("tickets");
         container.appendChild(ticket);
+
+
+        // var spacer = document.createElement("div");
+        // spacer.className = "spacer";
+        // container.appendChild(spacer);
 
     }
 }
 
 function clearTickets()
 {
-    var container = document.getElementById("tickets")
+    var container = document.getElementById("tickets");
     //var elements = container.children;
 
     //var names = '';

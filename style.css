@@ -14,3 +14,7 @@ h1 {
 coolfont {
   font-family: monospace;
 }
+coolfont.padded {
+  font-weight: bolder;
+  padding-left: 50px;
+}
