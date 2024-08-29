@@ -1,0 +1,17 @@
+body {
+  background: white;
+  font-size: 200%;
+}
+p {
+  color: black;
+}
+p2 {
+  color: black;
+  font-size: 80%;
+}
+h1 {
+  font-weight: normal;
+}
+coolfont {
+  font-family: monospace;
+}
