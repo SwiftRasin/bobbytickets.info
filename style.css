@@ -11,10 +11,25 @@ h1 {
   font-weight: normal;
   color: rgb(255, 255, 255);
 }
+.ticket {
+  background-color: rgb(33, 33, 33);
+  width: fit-content;
+  padding-right: 50px;
+  border-top-right-radius: 25px;
+  border-bottom-right-radius: 25px;
+}
+#checked.ticket {
+  color: rgb(66, 193, 102);
+  background-color: rgb(44, 114, 64);
+  width: fit-content;
+  padding-right: 50px;
+  border-top-right-radius: 25px;
+  border-bottom-right-radius: 25px;
+}
 coolfont {
   font-family: monospace;
 }
-coolfont.padded {
+.padded {
   font-weight: bolder;
   padding-left: 50px;
 }
