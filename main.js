@@ -10,6 +10,12 @@ function makeTicket(name, series, image, quantity, deployed, value)
     }
 }
 
+function bye_ls()
+{
+    localStorage.clear();
+}
+
+
 var bobby_tickets = {
     "series1": {
         "available": false,
@@ -107,7 +113,10 @@ function clear_list()
 
 function get_list()
 {
-    return localStorage.getItem("checklist").split(",");
+    if (localStorage.getItem("checklist") != null)
+        return localStorage.getItem("checklist").split(",");
+    else
+        return [];
 }
 
 function save_list()
