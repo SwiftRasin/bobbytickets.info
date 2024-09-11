@@ -13,6 +13,9 @@ h1 {
   font-weight: normal;
   color: rgb(255, 255, 255);
 }
+#tickets {
+  zoom: 100%;
+}
 .ticket {
   background-color: rgb(33, 33, 33);
   width: fit-content;
