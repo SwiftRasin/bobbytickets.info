@@ -23,7 +23,7 @@ var bobby_tickets = {
         "bobby": makeTicket("bobby", 1, "bobby", 12, true, 1)
     },
     "series2": {
-        "available": true,
+        "available": false,
 
         "happy bobby": makeTicket("happy bobby", 2, "happy bobby", 24, true, 1),
         "bobby is skeptical": makeTicket("bobby is skeptical", 2, "bobby is skeptical", 24, true, 2),
@@ -31,7 +31,7 @@ var bobby_tickets = {
         "bobby AMALGAMATION": makeTicket("bobby AMALGAMATION", 2, "bobby AMALGAMATION", 24, true, 1),    
     },
     "series3": {
-        "available": true,
+        "available": false,
 
         "angry bobby": makeTicket("angry bobby", 3, "angry bobby", 12, true, 2),
         "bobby JR": makeTicket("bobby JR", 3, "bobby JR", 12, true, 1),
@@ -43,7 +43,7 @@ var bobby_tickets = {
         "robby": makeTicket("robby", 3, "robby", 12, true, 1),
     },
     "series4a": {
-        "available": false,
+        "available": true,
 
         "COOL AS ICE": makeTicket("COOL AS ICE", "4a", "COOL AS ICE", 12, true, 10),
         "..blobby ticket?": makeTicket("..blobby ticket?", "4a", "blobby", 24, true, 1),
