@@ -43,7 +43,7 @@ var bobby_tickets = {
         "robby": makeTicket("robby", 3, "robby", 12, true, 1),
     },
     "series4a": {
-        "available": true,
+        "available": false,
 
         "COOL AS ICE": makeTicket("COOL AS ICE", "4a", "COOL AS ICE", 12, true, 10),
         "..blobby ticket?": makeTicket("..blobby ticket?", "4a", "blobby", 24, true, 1),
@@ -57,6 +57,22 @@ var bobby_tickets = {
         "OBSERVED": makeTicket("OBSERVED", "4a", "OBSERVED", 20, true, 3),
         "chunky bobby": makeTicket("chunky bobby", "4a", "chunky bobby", 24, true, 2),
         "traumatized bobby": makeTicket("traumatized bobby", "4a", "traumatized bobby", 24, true, 2),
+    },
+    "series4b": {
+        "available": true,
+
+        "nerd bobby": makeTicket("nerd bobby", "4b", "nerd bobby", 12, true, 2),
+        "caffeinated bobby": makeTicket("caffeinated bobby", "4b", "caffeinated bobby", 12, true, 2),
+        "hardworker bobby": makeTicket("hardworker bobby", "4b", "hardworker bobby", 12, true, 3),
+        "nine-to-five": makeTicket("nine-to-five", "4b", "nine-to-five", 12, true, 3),
+        "very happy bobby": makeTicket("very happy bobby", "4b", "very happy bobby", 6, true, 5),
+        "bobbytsu ツ": makeTicket("bobbytsu ツ", "4b", "bobbytsu ツ", 12, true, 1),
+        "THE OPPOSITION": makeTicket("THE OPPOSITION", "4b", "THE OPPOSITION", 6, true, 5),
+        "what even is this": makeTicket("what even is this", "4b", "what even is this", 12, true, 1),
+        "emo bobby": makeTicket("emo bobby", "4b", "emo bobby", 12, true, 2),
+        "disgusted bobby": makeTicket("disgusted bobby", "4b", "disgusted bobby", 12, true, 2),
+        "snowman bobby": makeTicket("snowman bobby", "4b", "snowman bobby", 12, true, 3),
+        "dizzy bobby": makeTicket("dizzy bobby", "4b", "dizzy bobby", 12, true, 2),
     },
 }
 
