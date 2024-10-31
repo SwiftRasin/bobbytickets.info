@@ -74,6 +74,26 @@ var bobby_tickets = {
         "snowman bobby": makeTicket("snowman bobby", "4b", "snowman bobby", 36, true, 3),
         "dizzy bobby": makeTicket("dizzy bobby", "4b", "dizzy bobby", 36, true, 2),
     },
+    "series5a": {
+        "available": true,
+
+        "(un)dead bobby": makeTicket("(un)dead bobby", "5a", "(un)dead bobby", 24, true, 2),
+        "BBQ bobby": makeTicket("BBQ bobby", "5a", "BBQ bobby", 24, true, 2),
+        "bobby krueger": makeTicket("bobby krueger", "5a", "bobby krueger", 24, true, 3),
+        "bobby": makeTicket("bobby", "5a", "bobby", 24, true, 1),
+        "clown bobby": makeTicket("clown bobby", "5a", "clown bobby", 24, true, 3),
+        "DJ bobby": makeTicket("DJ bobby", "5a", "DJ bobby", 24, true, 3),
+        "evil bobby": makeTicket("evil bobby", "5a", "evil bobby", 24, true, 2),
+        "frankenstein bobby": makeTicket("frankenstein bobby", "5a", "frankenstein bobby", 24, true, 3),
+        "polter bobby": makeTicket("polter bobby", "5a", "polter bobby", 24, true, 2),
+        "pumpkin bobby": makeTicket("pumpkin bobby", "5a", "pumpkin bobby", 12, true, 10),
+        "scary bobby.. again": makeTicket("scary bobby.. again", "5a", "scary bobby.. again", 24, true, 2),
+        "spraypainter bobby": makeTicket("spraypainter bobby", "5a", "spraypainter bobby", 24, true, 2),
+        "bobby & robby": makeTicket("bobby & robby", "5a", "TAG TEAM bobby & robby", 24, true, 2),
+        "vampire bobby": makeTicket("vampire bobby", "5a", "vampire bobby", 24, true, 2),
+        "very angry bobby": makeTicket("very angry bobby", "5a", "very angry bobby", 24, true, 2),
+        "what": makeTicket("what", "5a", "what", 24, true, 1),
+    },
 }
 
 var curSeries = "none";
