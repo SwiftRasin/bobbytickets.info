@@ -22,17 +22,39 @@
     <div></div>
     <!-- <p2><coolfont>stats to be added soon! for now you can look at them!</coolfont></p2> -->
     <div></div>
-    <button onclick="showTickets(1)"><coolfont>series 1</coolfont></button>
+    <!-- <button onclick="showTickets(1)"><coolfont>series 1</coolfont></button>
     <button onclick="showTickets(2)"><coolfont>series 2</coolfont></button>
     <button onclick="showTickets(3)"><coolfont>series 3</coolfont></button>
     <button onclick="showTickets('4a')"><coolfont>series 4a</coolfont></button>
     <button onclick="showTickets('4b')"><coolfont>series 4b</coolfont></button>
-    <button onclick="showTickets('5a')"><coolfont>series 5a</coolfont></button>
-    <button onclick="clearTickets()"><coolfont>hide all</coolfont></button>
+    <button onclick="showTickets('5a')"><coolfont>series 5a</coolfont></button> -->
+
+    <label for="seriesDD"><coolfont>series: </coolfont></label>
+    <select name="seriesPicker" id="seriesDD" onchange="if (this.value != 'none') {showTickets(this.value)} else {clearTickets()}">
+      <option value="none">(None)</option>
+      <hr />
+      <optgroup label="Legacy (v1)">
+        <option value="1">Series 1</option>
+        <option value="2">Series 2</option>
+        <option value="3">Series 3</option>
+      </optgroup>
+      <hr />
+      <optgroup label="Legacy (v2)">
+        <option value="4a">Series 4a</option>
+        <option value="4b">Series 4b</option>
+      </optgroup>
+      <hr />
+      <optgroup label="Current (v3)">
+        <option value="5a">Series 5a</option>
+      </optgroup>
+      
+    </select>
     <div></div>
+
     <button onclick="clear_list()"><coolfont>clear checklist</coolfont></button>
     <button onclick="import_list()"><coolfont>import checklist</coolfont></button>
     <button onclick="export_list()"><coolfont>export checklist</coolfont></button>
+    <!-- <button onclick="clearTickets()"><coolfont>hide all</coolfont></button> -->
     <div></div>
     
   </head>

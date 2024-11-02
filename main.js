@@ -59,7 +59,7 @@ var bobby_tickets = {
         "traumatized bobby": makeTicket("traumatized bobby", "4a", "traumatized bobby", 24, true, 2),
     },
     "series4b": {
-        "available": true,
+        "available": false,
 
         "nerd bobby": makeTicket("nerd bobby", "4b", "nerd bobby", 36, true, 2),
         "caffeinated bobby": makeTicket("caffeinated bobby", "4b", "caffeinated bobby", 36, true, 2),
@@ -161,9 +161,19 @@ function save_list()
     localStorage.setItem("checklist", checklist);
 }
 
+// function formatAll()
+// {
+//     var finalString = "";
+//     for (var i = 0; i < checklist.length; i++)
+//     {
+//         finalString += checklist[i] + ((checklist.length > 1) ? "\n" : "");
+//     }
+//     return finalString;
+// }
+
 function export_list()
 {
-    save(checklist.toString, 'tickets-checklist.txt');
+    save(checklist, 'tickets-checklist.txt');
 }
 
 function import_list() 
@@ -178,9 +188,14 @@ function import_list()
         if (file) {
             const reader = new FileReader();
             reader.onload = function(event) {
-                checklist = (""+(event.target.result)).split(",");
+                checklist = event.target.result.split("\n");//(""+(event.target.result)).split(",");
+                while (checklist[checklist.length-1] == "")
+                {
+                    checklist.pop();
+                }
                 update_all();
                 save_list();
+                console.log(checklist);
             };
             reader.readAsText(file);
         }
