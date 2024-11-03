@@ -1,3 +1,24 @@
+function preloadImages(array) { //! yoinked from https://stackoverflow.com/questions/10240110/how-do-you-cache-an-image-in-javascript
+    if (!preloadImages.list) {
+        preloadImages.list = [];
+    }
+    var list = preloadImages.list;
+    for (var i = 0; i < array.length; i++) {
+        var img = new Image();
+        img.onload = function() {
+            var index = list.indexOf(this);
+            if (index !== -1) {
+                // remove image from the array once it's loaded
+                // for memory consumption reasons
+                list.splice(index, 1);
+            }
+        }
+        list.push(img);
+        img.src = array[i];
+    }
+}
+
+
 function makeTicket(name, series, image, quantity, deployed, value)
 {
     return {
@@ -96,6 +117,24 @@ var bobby_tickets = {
     },
 }
 
+var ticketImgs = [];
+for (var i = 0; i < Object.keys(bobby_tickets).length; i++) //grabbing the ticket images
+{
+    var a = Object.keys(bobby_tickets)[i]; //the series we're searching
+    //console.log(a);
+    for (var j = 0; j < Object.keys(bobby_tickets[a]).length; j++)
+    {
+        var ticket = Object.keys(bobby_tickets[a])[j];
+        if (ticket == "available")
+            continue;
+        ticket = bobby_tickets[a][ticket];
+        //console.log(ticket);
+        ticketImgs.push(ticket.image);
+    }
+}
+//console.log(ticketImgs);
+preloadImages(ticketImgs);
+
 var curSeries = "none";
 
 var checklist = [];
@@ -161,6 +200,7 @@ function save_list()
     localStorage.setItem("checklist", checklist);
 }
 
+/* unnecessary function */
 // function formatAll()
 // {
 //     var finalString = "";
@@ -224,6 +264,8 @@ function draw()
             alltickets[i].id = "checked";
         else
             alltickets[i].id = "";
+
+        // elementHover(alltickets[i], alltickets[i].defhover);
     }
 }
 
@@ -304,10 +346,24 @@ function showTickets(series)
 
         alltickets.push(ticket);
 
+        ticket.defhover = false;
+        ticket.defwidth = ticket.style.width;
 
-        // var spacer = document.createElement("div");
-        // spacer.className = "spacer";
-        // container.appendChild(spacer);
+        ticket.addEventListener('mouseenter', function() {
+            ticket.defhover = true;
+            //console.log('hovered');
+        });
+          
+        ticket.addEventListener('mouseleave', function() {
+            ticket.defhover = false;
+            //console.log('not hovered');
+        });
+
+
+        var spacer = document.createElement("div");
+        spacer.className = "spacer";
+        // spacer.style.paddingTop = "25px"; //!moved to css stylesheet for animation
+        container.appendChild(spacer);
 
     }
 }
@@ -320,7 +376,7 @@ function clearTickets()
     //var elements = container.children;
 
     //var names = '';
-    for(var i = 0; container.lastChild != undefined; i++) {
+    for (var i = 0; container.lastChild != undefined; i++) { //i don't know a better way to do this
         container.removeChild(container.lastChild);
     }
 }

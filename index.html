@@ -3,9 +3,9 @@
   <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.10.0/p5.js"></script>
   <script src="main.js"></script>
   <head>
-    <title>the bobby ticket checklist</title>
+    <title >the bobby ticket checklist</title>
     <link rel="stylesheet" href="style.css">
-    <div class="logo">
+    <div class="logo" id="slides">
       <img style="vertical-align: bottom;" src="img/shared/bobbyco.png" width="200px"></img>
       <!-- <p2 style="padding-left: 2px; vertical-align: baseline; color: #000;"><coolfont><b>.xyz</b></coolfont></p2> -->
       
@@ -17,7 +17,7 @@
 
       <!-- <coolfont style="vertical-align: top; padding-left: 50px; color: #000"> <b>Join our discord!: [<a href="https://discord.gg/R6P6GKhfRk">bobbyco discord</a>] </b> </coolfont> -->
     </div>
-    <h1 id="logopadding"><coolfont>the <b>bobby ticket</b> checklist</coolfont></h1>
+    <h1 id="logopadding" class="slides"><coolfont>the <b>bobby ticket</b> checklist</coolfont></h1>
     <!-- <p1><coolfont>this is where you can check the status of bobby tickets!</coolfont></p1> -->
     <div></div>
     <!-- <p2><coolfont>stats to be added soon! for now you can look at them!</coolfont></p2> -->
@@ -28,34 +28,37 @@
     <button onclick="showTickets('4a')"><coolfont>series 4a</coolfont></button>
     <button onclick="showTickets('4b')"><coolfont>series 4b</coolfont></button>
     <button onclick="showTickets('5a')"><coolfont>series 5a</coolfont></button> -->
+    <p class="slides" id="slides">
+      <label for="seriesDD"><coolfont>series: </coolfont></label>
+        <select name="seriesPicker" id="seriesDD" onchange="if (this.value != 'none') {showTickets(this.value)} else {clearTickets()}">
+          <option value="none">(None)</option>
+          <hr />
+          <optgroup label="Legacy (v1)">
+            <option value="1">Series 1</option>
+            <option value="2">Series 2</option>
+            <option value="3">Series 3</option>
+          </optgroup>
+          <hr />
+          <optgroup label="Legacy (v2)">
+            <option value="4a">Series 4a</option>
+            <option value="4b">Series 4b</option>
+          </optgroup>
+          <hr />
+          <optgroup label="Current (v3)">
+            <option value="5a">Series 5a</option>
+          </optgroup>
+          
+        </select>
+        <!-- <div></div> -->
 
-    <label for="seriesDD"><coolfont>series: </coolfont></label>
-    <select name="seriesPicker" id="seriesDD" onchange="if (this.value != 'none') {showTickets(this.value)} else {clearTickets()}">
-      <option value="none">(None)</option>
-      <hr />
-      <optgroup label="Legacy (v1)">
-        <option value="1">Series 1</option>
-        <option value="2">Series 2</option>
-        <option value="3">Series 3</option>
-      </optgroup>
-      <hr />
-      <optgroup label="Legacy (v2)">
-        <option value="4a">Series 4a</option>
-        <option value="4b">Series 4b</option>
-      </optgroup>
-      <hr />
-      <optgroup label="Current (v3)">
-        <option value="5a">Series 5a</option>
-      </optgroup>
-      
-    </select>
-    <div></div>
+        <button class="slides" onclick="clear_list()"><coolfont>clear checklist</coolfont></button>
+        <button class="slides" onclick="import_list()"><coolfont>import checklist</coolfont></button>
+        <button class="slides" onclick="export_list()"><coolfont>export checklist</coolfont></button>
+        <!-- <button onclick="clearTickets()"><coolfont>hide all</coolfont></button> -->    
+      </p>
 
-    <button onclick="clear_list()"><coolfont>clear checklist</coolfont></button>
-    <button onclick="import_list()"><coolfont>import checklist</coolfont></button>
-    <button onclick="export_list()"><coolfont>export checklist</coolfont></button>
-    <!-- <button onclick="clearTickets()"><coolfont>hide all</coolfont></button> -->
-    <div></div>
+    <div id="logopadding"></div>  
+    
     
   </head>
   <body>

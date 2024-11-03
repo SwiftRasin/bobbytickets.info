@@ -22,7 +22,57 @@ h1 {
   padding-right: 50px;
   border-top-right-radius: 25px;
   border-bottom-right-radius: 25px;
+  word-spacing: normal;
+  /* animation: normal_ticket 1s ease-in-out; */
 }
+
+.ticket:is(.ticket) { /* i was gonna try something here but it wouldn't look good */
+  animation-timing-function: cubic-bezier(0, 1, 0 ,1);
+  animation: slide-in;
+  animation-duration: 0.8s; 
+}
+
+.spacer {
+  animation-timing-function: cubic-bezier(0, 0, 1 ,1);
+  animation: spcr;
+  animation-duration: 1s;
+  padding-top: 25px;
+}
+
+
+@keyframes spcr {
+  from {
+    padding-top: 0px;
+  }
+
+  to {
+    padding-top: 25px;
+  }
+}
+
+@keyframes slide-in {
+  from {
+    translate: -150vw 0;
+    scale: 0% 1;
+  }
+
+  to {
+    translate: 0 0;
+    scale: 100% 1;
+  }
+}
+
+#slides {
+  animation-timing-function: cubic-bezier(0, 1, 0 ,1);
+  animation: slide-in;
+  animation-duration: 0.8s; 
+}
+.slides {
+  animation-timing-function: cubic-bezier(0, 1, 0 ,1);
+  animation: slide-in;
+  animation-duration: 0.8s; 
+}
+
 #checked.ticket {
   color: rgb(66, 193, 102);
   background-color: rgb(44, 114, 64);
