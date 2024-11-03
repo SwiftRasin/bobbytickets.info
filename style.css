@@ -27,7 +27,7 @@ h1 {
 }
 
 .ticket:is(.ticket) { /* i was gonna try something here but it wouldn't look good */
-  animation-timing-function: cubic-bezier(0, 1, 0 ,1);
+  animation-timing-function: ease-out;/* cubic-bezier(0, 1, 0 ,1); */
   animation: slide-in-ticket;
   animation-duration: 1s; 
 }
@@ -64,7 +64,7 @@ h1 {
 @keyframes slide-in {
   from {
     translate: -150vw 0;
-    scale: 0% 1;
+    scale: 100% 1;
   }
 
   to {

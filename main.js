@@ -260,11 +260,17 @@ function draw()
 
 function ticketHover(ticket, hover)
 {
-    if (hover) {
-        ticket.style.transform = "scale(0,0," + ((1.1*ticket.defwidth) - ticket.style.width)/10 + ", 1)";
-    }
-    else {
-        ticket.style.transform = "scale(0,0," + ((ticket.defwidth) - ticket.style.width)/10 + ", 1)";
+    if (ticket.canAnimate)
+    {
+        //console.log(ticket.style.transform);
+        if (hover) {
+            //console.log("hovering");
+            //console.log(ticket);
+            //ticket.style.transform = "scaleX(" + ((1.1*ticket.defwidth) - ticket.style.width)/10 + ")";
+        }
+        else {
+            //ticket.style.transform = "scaleX(" + ((ticket.defwidth) - ticket.style.width)/10 + ")";
+        }
     }
 }
 
@@ -370,9 +376,19 @@ function showTickets(series, clear = true, showSeries = false)
         ticket.defhover = false;
         ticket.defwidth = ticket.style.width;
 
+        ticket.canAnimate = false;
+
+        ticket.addEventListener("animationstart", function()
+        {
+            ticket.canAnimate = false;
+        }, false);
+        ticket.addEventListener("animationend", function()
+        {
+            ticket.canAnimate = true;
+        }, false);
+
         ticket.addEventListener('mouseenter', function() {
             this.defhover = true;
-
             //console.log("hovered" + this.defhover);
         });
           
