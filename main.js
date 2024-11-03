@@ -128,7 +128,7 @@ for (var i = 0; i < Object.keys(bobby_tickets).length; i++) //grabbing the ticke
         if (ticket == "available")
             continue;
         ticket = bobby_tickets[a][ticket];
-        //console.log(ticket);
+        //console.log(ticket); 
         ticketImgs.push(ticket.image);
     }
 }
