@@ -1,21 +1,24 @@
-function preloadImages(array) { //! yoinked from https://stackoverflow.com/questions/10240110/how-do-you-cache-an-image-in-javascript
+function preloadImages(array) { //! yoinked and modified from https://stackoverflow.com/questions/10240110/how-do-you-cache-an-image-in-javascript
     if (!preloadImages.list) {
-        preloadImages.list = [];
+        preloadImages.list = {};
     }
     var list = preloadImages.list;
     for (var i = 0; i < array.length; i++) {
         var img = new Image();
         img.onload = function() {
-            var index = list.indexOf(this);
-            if (index !== -1) {
-                // remove image from the array once it's loaded
-                // for memory consumption reasons
-                list.splice(index, 1);
-            }
+            //var index = list[img.src];
+            // if (index !== -1) {
+            //     // remove image from the array once it's loaded
+            //     // for memory consumption reasons
+            //     list.splice(index, 1);
+            // }
+            console.log("image " + "\"" + this.src + "\"" + " loaded!");
         }
-        list.push(img);
+        list[array[i]] = img;
         img.src = array[i];
     }
+    console.log(list);
+    console.log(preloadImages.list);
 }
 
 
@@ -117,24 +120,6 @@ var bobby_tickets = {
     },
 }
 
-var ticketImgs = [];
-for (var i = 0; i < Object.keys(bobby_tickets).length; i++) //grabbing the ticket images
-{
-    var a = Object.keys(bobby_tickets)[i]; //the series we're searching
-    //console.log(a);
-    for (var j = 0; j < Object.keys(bobby_tickets[a]).length; j++)
-    {
-        var ticket = Object.keys(bobby_tickets[a])[j];
-        if (ticket == "available")
-            continue;
-        ticket = bobby_tickets[a][ticket];
-        //console.log(ticket); 
-        ticketImgs.push(ticket.image);
-    }
-}
-//console.log(ticketImgs);
-preloadImages(ticketImgs);
-
 var curSeries = "none";
 
 var checklist = [];
@@ -171,8 +156,11 @@ function update_all()
 {
     for (var i = 0; i < alltickets.length; i++)
     {
-        if (curSeries != "none")
+        if (curSeries != "none" && curSeries != "all" )
             showTickets(curSeries);
+        else if (curSeries == "all") {
+            showAllTickets();
+        }
     }
 }
 
@@ -269,11 +257,23 @@ function draw()
     }
 }
 
-
-function showTickets(series)
+function showAllTickets(clear = true)
 {
-    clearTickets();
+    if (clear)
+        clearTickets();
+    var allSeries = Object.keys(bobby_tickets);
+    console.log(allSeries);
+    for (var i = 0; i < allSeries.length; i++)
+        showTickets(allSeries[i], false, true);
+}
+
+function showTickets(series, clear = true, showSeries = false)
+{
+    if (clear)
+        clearTickets();
     curSeries = series;
+    if ((typeof series) == "string" && series.includes("series"))
+        series = series.replaceAll("series", "");
     var tickets = Object.keys(bobby_tickets["series"+series]);
     for (var i = 0; i < tickets.length; i++)
     {
@@ -324,17 +324,27 @@ function showTickets(series)
 
         var available = document.createElement("coolfont");
         available.className = "padded";
-        available.textContent = "available: " + (trueA ? "yes" : "no");
+        available.textContent = (trueA ? "available" : "not available");
         available.id = "available";
         available.title = "* is this ticket still available?"
         ticket.appendChild(available);
+
+        if (showSeries) {
+            var seriesText = document.createElement("coolfont");
+            seriesText.className = "padded";
+            seriesText.textContent = "series: " + series;
+            seriesText.id = "series";
+            seriesText.title = "* what series this ticket is from?"
+            ticket.appendChild(seriesText);
+        }
         
 
         var div1 = document.createElement("div");
         ticket.appendChild(div1);
 
-        var img = document.createElement("img");
-        img.src = data.image;
+        // var img = document.createElement("img");
+        // img.src = data.image;
+        var img = preloadImages.list[data.image];
         img.width = 500;
         ticket.appendChild(img);
 
@@ -381,3 +391,21 @@ function clearTickets()
     }
 }
 
+
+var ticketImgs = [];
+for (var i = 0; i < Object.keys(bobby_tickets).length; i++) //grabbing the ticket images
+{
+    var a = Object.keys(bobby_tickets)[i]; //the series we're searching
+    //console.log(a);
+    for (var j = 0; j < Object.keys(bobby_tickets[a]).length; j++)
+    {
+        var ticket = Object.keys(bobby_tickets[a])[j];
+        if (ticket == "available")
+            continue;
+        ticket = bobby_tickets[a][ticket];
+        //console.log(ticket);
+        ticketImgs.push(ticket.image);
+    }
+}
+//console.log(ticketImgs);
+preloadImages(ticketImgs);

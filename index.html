@@ -30,8 +30,9 @@
     <button onclick="showTickets('5a')"><coolfont>series 5a</coolfont></button> -->
     <p class="slides" id="slides">
       <label for="seriesDD"><coolfont>series: </coolfont></label>
-        <select name="seriesPicker" id="seriesDD" onchange="if (this.value != 'none') {showTickets(this.value)} else {clearTickets()}">
+        <select name="seriesPicker" id="seriesDD" onchange="if (this.value != 'none' && this.value != 'all') {showTickets(this.value)} else if (this.value == 'all') {showAllTickets()} else {clearTickets()}">
           <option value="none">(None)</option>
+          <option value="all">All</option>
           <hr />
           <optgroup label="Legacy (v1)">
             <option value="1">Series 1</option>
