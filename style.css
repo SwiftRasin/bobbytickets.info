@@ -28,8 +28,8 @@ h1 {
 
 .ticket:is(.ticket) { /* i was gonna try something here but it wouldn't look good */
   animation-timing-function: cubic-bezier(0, 1, 0 ,1);
-  animation: slide-in;
-  animation-duration: 0.8s; 
+  animation: slide-in-ticket;
+  animation-duration: 1s; 
 }
 
 .spacer {
@@ -39,6 +39,17 @@ h1 {
   padding-top: 25px;
 }
 
+@keyframes slide-in-ticket {
+  from {
+    translate: -150vw 0;
+    scale: -20% 1;
+  }
+
+  to {
+    translate: 0 0;
+    scale: 100% 1;
+  }
+}
 
 @keyframes spcr {
   from {

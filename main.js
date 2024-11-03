@@ -253,7 +253,18 @@ function draw()
         else
             alltickets[i].id = "";
 
-        // elementHover(alltickets[i], alltickets[i].defhover);
+        
+        ticketHover(alltickets[i], alltickets[i].defhover);
+    }
+}
+
+function ticketHover(ticket, hover)
+{
+    if (hover) {
+        ticket.style.transform = "scale(0,0," + ((1.1*ticket.defwidth) - ticket.style.width)/10 + ", 1)";
+    }
+    else {
+        ticket.style.transform = "scale(0,0," + ((ticket.defwidth) - ticket.style.width)/10 + ", 1)";
     }
 }
 
@@ -360,13 +371,14 @@ function showTickets(series, clear = true, showSeries = false)
         ticket.defwidth = ticket.style.width;
 
         ticket.addEventListener('mouseenter', function() {
-            ticket.defhover = true;
-            //console.log('hovered');
+            this.defhover = true;
+
+            //console.log("hovered" + this.defhover);
         });
           
         ticket.addEventListener('mouseleave', function() {
-            ticket.defhover = false;
-            //console.log('not hovered');
+            this.defhover = false;
+            //console.log("not hovered" + this.defhover);
         });
 
 
@@ -378,7 +390,7 @@ function showTickets(series, clear = true, showSeries = false)
     }
 }
 
-function clearTickets()
+function clearTickets(anim = false, ddmenu = undefined)
 {
     curSeries = "none";
     alltickets = [];
@@ -386,9 +398,46 @@ function clearTickets()
     //var elements = container.children;
 
     //var names = '';
-    for (var i = 0; container.lastChild != undefined; i++) { //i don't know a better way to do this
-        container.removeChild(container.lastChild);
+
+    if (anim)
+    {
+        for (var i = 0; i < container.children.length; i++) {
+            container.children[i].animate(
+                [
+                    // keyframes
+                    {
+                        translate: "0 0",
+                        scale: "1, 1"
+                    },
+                    {
+                        translate: "-150vw 0",
+                        scale: "0, 1"
+                    },
+                ],
+                {
+                    // timing options
+                    duration: 1000
+                },
+            );
+        }
+        ddmenu.disabled = true;
+        setTimeout(function()
+        {
+            for (var i = 0; container.lastChild != undefined; i++) { //i don't know a better way to do this
+                    container.removeChild(container.lastChild);
+            }
+            ddmenu.disabled = false;
+        }, 900);
+
     }
+    else
+    {
+        for (var i = 0; container.lastChild != undefined; i++) { //i don't know a better way to do this
+                container.removeChild(container.lastChild);
+        }
+    }
+    
+    
 }
 
 
