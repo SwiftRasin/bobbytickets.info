@@ -27,7 +27,7 @@ function makeTicket(name, series, image, quantity, deployed, value)
     return {
         name: name,
         series: series,
-        image: "img/series"+series+"/"+image+".png",
+        image: "../img/series"+series+"/"+image+".png",
         quantity: quantity,
         deployed: deployed,
         value: value

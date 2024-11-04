@@ -1,70 +1,44 @@
 <!DOCTYPE html>
 <html>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.10.0/p5.js"></script>
-  <script src="main.js"></script>
+  <script src="util.js"></script>
   <head>
-    <title >the bobby ticket checklist</title>
+    <title >bobbyco</title>
     <link rel="stylesheet" href="style.css">
     <div class="logo" id="slides">
-      <img style="vertical-align: bottom;" src="img/shared/bobbyco.png" width="200px"></img>
-      <!-- <p2 style="padding-left: 2px; vertical-align: baseline; color: #000;"><coolfont><b>.xyz</b></coolfont></p2> -->
-      
-      <img style="padding-left: 50px; vertical-align: bottom;" src="img/shared/bobby.png" width="75px"></img>
-
-      <coolfont style="vertical-align: top; padding-left: 50px; color: #000"> <b>Contact Us: bobbyco.official@gmail.com</b> </coolfont>
-
-      <coolfont style="vertical-align: top; padding-left: 50px; color: #000"> <b>We're hiring: [<a href="https://forms.gle/rCgxpfMELa6Af8NN6">application here</a>] </b> </coolfont>
-
-      <!-- <coolfont style="vertical-align: top; padding-left: 50px; color: #000"> <b>Join our discord!: [<a href="https://discord.gg/R6P6GKhfRk">bobbyco discord</a>] </b> </coolfont> -->
+      <img style="vertical-align: bottom;" src="img/shared/bobbyco.png" width="200px">
+  
+      <img style="padding-left: 50px; vertical-align: bottom;" src="img/shared/bobby.png" width="75px">
+  
+      <!-- Home -->
+      <img style="padding-left: 50px; vertical-align: top;" src="img/shared/home.png" width="75px" onclick="subpage('')">
+      <span style="color: #000;" onclick="subpage('')"><coolfont><b>home</b></coolfont></span>
+  
+      <!-- Checklist -->
+      <img style="padding-left: 50px; vertical-align: top;" src="img/shared/checklist.png" width="75px" onclick="subpage('checklist')">
+      <span style="color: #000;" onclick="subpage('checklist')"><coolfont><b>checklist</b></coolfont></span>
+  
+      <!-- Contact -->
+      <img style="padding-left: 50px; vertical-align: bottom;" src="img/shared/mail.png" width="100px" onclick="subpage('contact')">
+      <span style="color: #000;" onclick="subpage('contact')"><coolfont><b>contact</b></coolfont></span>
     </div>
-    <h1 id="logopadding" class="slides"><coolfont>the <b>bobby ticket</b> checklist</coolfont></h1>
-    <!-- <p1><coolfont>this is where you can check the status of bobby tickets!</coolfont></p1> -->
-    <div></div>
-    <!-- <p2><coolfont>stats to be added soon! for now you can look at them!</coolfont></p2> -->
-    <div></div>
+
+
+
     <!-- <button onclick="showTickets(1)"><coolfont>series 1</coolfont></button>
     <button onclick="showTickets(2)"><coolfont>series 2</coolfont></button>
     <button onclick="showTickets(3)"><coolfont>series 3</coolfont></button>
     <button onclick="showTickets('4a')"><coolfont>series 4a</coolfont></button>
     <button onclick="showTickets('4b')"><coolfont>series 4b</coolfont></button>
     <button onclick="showTickets('5a')"><coolfont>series 5a</coolfont></button> -->
-    <p class="slides" id="slides">
-      <label for="seriesDD"><coolfont>series: </coolfont></label>
-        <select name="seriesPicker" id="seriesDD" onchange="if (this.value != 'none' && this.value != 'all') {showTickets(this.value)} else if (this.value == 'all') {showAllTickets()} else {clearTickets(true, this)}">
-          <option value="none">(None)</option>
-          <option value="all">All</option>
-          <hr />
-          <optgroup label="Legacy (v1)">
-            <option value="1">Series 1</option>
-            <option value="2">Series 2</option>
-            <option value="3">Series 3</option>
-          </optgroup>
-          <hr />
-          <optgroup label="Legacy (v2)">
-            <option value="4a">Series 4a</option>
-            <option value="4b">Series 4b</option>
-          </optgroup>
-          <hr />
-          <optgroup label="Current (v3)">
-            <option value="5a">Series 5a</option>
-          </optgroup>
-          
-        </select>
-        <!-- <div></div> -->
-
-        <button class="slides" onclick="clear_list()"><coolfont>clear checklist</coolfont></button>
-        <button class="slides" onclick="import_list()"><coolfont>import checklist</coolfont></button>
-        <button class="slides" onclick="export_list()"><coolfont>export checklist</coolfont></button>
-        <!-- <button onclick="clearTickets()"><coolfont>hide all</coolfont></button> -->    
-      </p>
-
-    <div id="logopadding"></div>  
-    
-    
   </head>
-  <body>
-    <div id="tickets">
-      <!-- <button class="ticket"><coolfont>series 1</coolfont></button> -->
-    </div>
-  </body>
+
+  <div class="slides">
+
+    <h1 class="slides" id="logopadding"><coolfont style="font-size: 50%; color: #6c6c6c"></coolfont><coolfont>the <b>bobby ticket</b> website</coolfont></h1>
+    <div class="slides" id="logopadding"><coolfont>there isn't much here; it's just an empty homepage for now!</coolfont></div>
+    <div style="padding-top: 50px; color: #6c6c6c" class="slides" id="logopadding"><coolfont>looking for something? click the checklist icon to view <u id="" onclick="subpage('checklist')">the <b>bobby ticket</b> checklist</u>.</coolfont></div>
+
+  </div>
+  
 </html>
