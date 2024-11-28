@@ -1,3 +1,7 @@
+const path = window.location.pathname;
+
+const isHome = path === "/" || path === "/index.html" || path === "/index.htm" || path === "/bobbytickets.info/" || path === "/bobbytickets.info/index.html";
+
 function subpage(dir)
 {
     if (dir !== "") {
@@ -28,7 +32,10 @@ function bar()
     bobbyco.src = "bobbyco.png";
     bobbyco.onerror = function()
     {
-        this.src = "../img/shared/bobbyco.png";
+        if (isHome)
+            this.src = "img/shared/bobbyco.png";
+        else
+            this.src = "../img/shared/bobbyco.png";
     }
     div.appendChild(bobbyco);
 
