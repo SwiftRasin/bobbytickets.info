@@ -70,6 +70,10 @@ function createBarOption(img,page,width,tooltip,indexName)
     option.dataset.page = page;
     option.dataset.w = width;
     option.title = tooltip;
+    option.onerror = function()
+    {
+        option.src = "img/shared/"+ img +".png";
+    }
     option.onmouseover = function()
     {
         this.width = this.dataset.w*1.2;
