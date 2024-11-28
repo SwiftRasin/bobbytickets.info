@@ -77,7 +77,7 @@ var bobby_tickets = {
         "DRAGGED IN": makeTicket("DRAGGED IN", "4a", "DRAGGED IN", 12, true, 5),
         "3D BOBBY": makeTicket("3D BOBBY", "4a", "3D BOBBY", 12, true, 5),
         "menace bobby": makeTicket("menace bobby", "4a", "menace bobby", 24, true, 2),
-        "tekcit ybbob": makeTicket("tekcit ybbob", "4a", "tekcit ybbob", 24, true, 1),
+        "reverse bobby": makeTicket("reverse bobby", "4a", "tekcit ybbob", 24, true, 1),
         "OBSERVED": makeTicket("OBSERVED", "4a", "OBSERVED", 20, true, 3),
         "chunky bobby": makeTicket("chunky bobby", "4a", "chunky bobby", 24, true, 2),
         "traumatized bobby": makeTicket("traumatized bobby", "4a", "traumatized bobby", 24, true, 2),
@@ -297,7 +297,7 @@ function showTickets(series, clear = true, showSeries = false)
         if (tickets[i] == "available")
             continue;
 
-        var ticket = document.createElement("div")
+        var ticket = document.createElement("div");
         ticket.className = "ticket";
 
         var series_data = bobby_tickets[("series"+series)];
@@ -343,7 +343,7 @@ function showTickets(series, clear = true, showSeries = false)
         available.className = "padded";
         available.textContent = (trueA ? "available" : "not available");
         available.id = "available";
-        available.title = "* is this ticket still available?"
+        available.title = "* is this ticket still available?";
         ticket.appendChild(available);
 
         if (showSeries) {
@@ -351,7 +351,7 @@ function showTickets(series, clear = true, showSeries = false)
             seriesText.className = "padded";
             seriesText.textContent = "series: " + series;
             seriesText.id = "series";
-            seriesText.title = "* what series this ticket is from?"
+            seriesText.title = "* what series this ticket is from?";
             ticket.appendChild(seriesText);
         }
         

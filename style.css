@@ -15,10 +15,10 @@ h1 {
 }
 
 #subpage {
-  
+  scale: 100%
 }
 #subpage:hover {
-
+  scale: 110%
 }
 
 @keyframes slide-in {

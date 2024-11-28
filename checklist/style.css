@@ -73,6 +73,13 @@ h1 {
   }
 }
 
+#subpage {
+  scale: 100%
+}
+#subpage:hover {
+  scale: 110%
+}
+
 #slides {
   animation-timing-function: cubic-bezier(0, 1, 0 ,1);
   animation: slide-in;
