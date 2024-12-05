@@ -64,11 +64,12 @@ function bar()
     div.appendChild(createBarOption("checklist","checklist/checklist.html",75,"checklist page"));
     div.appendChild(createBarOption("mail","contact/contact.html",100,"contact info"));
     div.appendChild(createBarOption("news","news/news.html",100,"bobbyco news"));
+    div.appendChild(createBarOption("misc", "misc/misc.html",90,"misc"))
 
     container.appendChild(div);
 }
 
-function createBarOption(img,page,width,tooltip,indexName)
+function createBarOption(img,page,width,tooltip)
 {
     var option = document.createElement("img");
     option.style = "padding-left: 50px; vertical-align: top;";
