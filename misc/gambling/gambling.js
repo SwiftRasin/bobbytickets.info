@@ -83,8 +83,14 @@ function draw() {
             break;
     }
     image(title,0,0);
-    span.children[0].textContent = "money: " + money + "ß";
+    span.children[0].textContent = "money: " + Math.floor(money*100)/100 + "ß";
     localStorage.setItem("gambling_money", money);
+    if (keyIsDown(82/*r*/) && keyIsDown(16/*left shift*/)) {
+        money = 10;
+        localStorage.setItem("gambling_money", 10);
+    }
+    
+    //console.log(money);
 }
 
 function switchState(newState) {
@@ -104,7 +110,7 @@ function switchState(newState) {
             },1000);
             setTimeout(() => {
                 realNumber = doRandom(1);
-                money = Math.round((money * realNumber)*10)/10;
+                money = money * realNumber;
                 switchState("gambled");
             },3000);
             break;

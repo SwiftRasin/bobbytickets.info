@@ -99,7 +99,7 @@ var bobby_tickets = {
         "dizzy bobby": makeTicket("dizzy bobby", "4b", "dizzy bobby", 36, true, 2),
     },
     "series5a": {
-        "available": true,
+        "available": false,
 
         "(un)dead bobby": makeTicket("(un)dead bobby", "5a", "(un)dead bobby", 24, true, 2),
         "BBQ bobby": makeTicket("BBQ bobby", "5a", "BBQ bobby", 24, true, 2),
@@ -345,6 +345,7 @@ function showTickets(series, clear = true, showSeries = false)
         available.id = "available";
         available.title = "* is this ticket still available?";
         ticket.appendChild(available);
+        available.style = "color: " + (trueA ? "#21eb5a" : "#b81838") + ";";
 
         if (showSeries) {
             var seriesText = document.createElement("coolfont");
