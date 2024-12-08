@@ -1,0 +1,4 @@
+* * version 0.1 (12/5/24)
+    - made the game
+* * version 0.2 (12/8/24)
+    - added a "scary gamble" button, that only chooses the highest or lowest multiplier.
