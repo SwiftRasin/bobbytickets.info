@@ -2,3 +2,4 @@
     - made the game
 * * version 0.2 (12/8/24)
     - added a "scary gamble" button, that only chooses the highest or lowest multiplier.
+    - also added animations for extreme wins (high rolls) or losses (low rolls).
