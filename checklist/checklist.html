@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.10.0/p5.js"></script>
+  <script src="https://ajax.googleapis.com/ajax/libs/webfont/1.6.26/webfont.js"></script>
   <script src="main.js"></script>
   <script src="../util.js"></script>
   <head>
@@ -15,6 +16,7 @@
 
     <title >the bobby ticket checklist</title>
     <link rel="stylesheet" href="style.css">
+    <link rel="icon" href="../favicon.png">
     <div class="logo" id="slides"></div>
 
     <script>bar()</script>
@@ -30,8 +32,8 @@
     <button onclick="showTickets('4b')"><coolfont>series 4b</coolfont></button>
     <button onclick="showTickets('5a')"><coolfont>series 5a</coolfont></button> -->
     <p class="slides" id="slides">
-      <label for="seriesDD"><coolfont>series: </coolfont></label>
-        <select name="seriesPicker" id="seriesDD" onchange="if (this.value != 'none' && this.value != 'all') {showTickets(this.value)} else if (this.value == 'all') {showAllTickets()} else {clearTickets(true, this)}">
+      <label for="seriesDD"><coolfont>series: </coolfont> </label>
+        <select style="font-family: 'Courier Prime'" name="seriesPicker" id="seriesDD" onchange="if (this.value != 'none' && this.value != 'all') {showTickets(this.value)} else if (this.value == 'all') {showAllTickets()} else {clearTickets(true, this)}">
           <option value="none">(None)</option>
           <option value="all">All</option>
           <hr />
@@ -46,16 +48,25 @@
             <option value="4b">Series 4b</option>
           </optgroup>
           <hr />
-          <optgroup label="Current (v3)">
+          <optgroup id="v3_tickets" label="Current (v3)">
             <option value="5a">Series 5a</option>
+            <!-- <option value="s1">Seasonal Series 1 (s1)</option> -->
           </optgroup>
           
         </select>
         <!-- <div></div> -->
 
-        <button class="slides" onclick="clear_list()"><coolfont>clear checklist</coolfont></button>
-        <button class="slides" onclick="import_list()"><coolfont>import checklist</coolfont></button>
-        <button class="slides" onclick="export_list()"><coolfont>export checklist</coolfont></button>
+        <button onclick="clear_list()"><coolfont><b>clear checklist</b></coolfont></button>
+        <button onclick="import_list()"><coolfont>import checklist</coolfont></button>
+        <button onclick="export_list()"><coolfont>export checklist</coolfont></button>
+        <div class="slides" style="transform: translate(0,-30px); font-size: 50%; font-family: 'Courier Prime'">
+          <label for="secrets">secret-inator</label>
+          <input id="secrets" style="font-family: 'Courier Prime'"></input>
+          <button id="secret" onclick="process(document.getElementById('secrets').value)"><coolfont>confirm</coolfont></button>
+          <button id="secret" onclick="localStorage.removeItem('bobbyco_secrets');window.location.reload();"><coolfont><b>relock all secrets </b><i>(reload)</i></coolfont></button>
+          <span id="secret_result"></span>
+        </div>
+        
         <!-- <button onclick="clearTickets()"><coolfont>hide all</coolfont></button> -->    
       </p>
 

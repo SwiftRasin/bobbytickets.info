@@ -1,3 +1,9 @@
+WebFont.load({
+    google: {
+        families: ['Courier Prime:400,400i,700,700i']
+    }
+});
+
 const path = window.location.pathname;
 
 const isHome = path === "/" || path === "/index.html" || path === "/index.htm" || path === "/bobbytickets.info/" || path === "/bobbytickets.info/index.html";

@@ -22,7 +22,7 @@ function preloadImages(array) { //! yoinked and modified from https://stackoverf
 }
 
 
-function makeTicket(name, series, image, quantity, deployed, value)
+function makeTicket(name, series, image, quantity, deployed, value, rotation = 0)
 {
     return {
         name: name,
@@ -30,7 +30,8 @@ function makeTicket(name, series, image, quantity, deployed, value)
         image: "../img/series"+series+"/"+image+".png",
         quantity: quantity,
         deployed: deployed,
-        value: value
+        value: value,
+        rotation: rotation
     }
 }
 
@@ -118,7 +119,24 @@ var bobby_tickets = {
         "very angry bobby": makeTicket("very angry bobby", "5a", "very angry bobby", 24, true, 2),
         "what": makeTicket("what", "5a", "what", 24, true, 1),
     },
+    "seriess1": {
+        "available": true,
+
+        "elf bobby": makeTicket("elf bobby", "s1", "elf bobby", 12, true, 1),
+        "SSK": makeTicket("santa bobby, sinterklaas bobby, & krampus bobby", "s1", "3WAY SSK", 6, true, 10),
+        "gingerbread bobby": makeTicket("gingerbread bobby", "s1", "gingerbread bobby", 12, true, 3),
+        "S&CAIjr": makeTicket("snowman bobby & COOL AS ICE jr", "s1", "snowman bobby & COOL AS ICE jr", 6, true, 5),
+        "present bobby": makeTicket("present bobby", "s1", "present bobby", 12, true, 2),
+        "scrooge": makeTicket("scrooge bobby", "s1", "scrooge bobby", 12, true, 3),
+        "tonguestuck": makeTicket("tonguestuck", "s1", "tonguestuck", 12, true, 4, 90),
+        "icefishing": makeTicket("icefishing", "s1", "icefishing", 12, true, 2)
+        
+    }
 }
+
+var secrets = {
+    "s1": {unlocked: false}
+};
 
 var curSeries = "none";
 
@@ -242,7 +260,7 @@ function setup() {
     if (checklist == undefined || checklist == "")
         checklist = [];
 }
-
+var start = false;
 function draw()
 {
     
@@ -256,6 +274,56 @@ function draw()
         
         ticketHover(alltickets[i], alltickets[i].defhover);
     }
+    if (!start)
+    {
+        console.log("initializing secrets...");
+        start = true;
+        if (localStorage.getItem("bobbyco_secrets") != null)
+            secrets = JSON.parse(localStorage.getItem("bobbyco_secrets"));
+        //console.log(secrets);
+        var allSecrets = Object.keys(secrets);
+        //console.log(allSecrets.length + " saved secrets found!");
+        //console.log(allSecrets);
+        //console.log(Object.values(secrets));
+        for (var i = 0; i < allSecrets.length; i++)
+        {
+            console.log(allSecrets[i] + " " + secrets[allSecrets[i]].unlocked);
+            if (secrets[allSecrets[i]].unlocked)
+                process(allSecrets[i],true);
+            var result = document.getElementById("secret_result");
+            result.style = "";
+            result.textContent = "";
+        }
+    }
+}
+
+
+function process(code,force = false) {
+    var result = document.getElementById("secret_result");
+    switch (code)
+    {
+        case "s1":
+            if (!secrets["s1"].unlocked || force) {
+                secrets["s1"].unlocked = true;
+                add_s1();
+                result.style = "color:rgb(78, 255, 116); font-weight: 700;";
+                result.textContent = "granted!";                
+            }
+
+            break;
+    }
+    //console.log(secrets);
+    localStorage.setItem("bobbyco_secrets", JSON.stringify(secrets));
+}
+
+function add_s1() {
+    console.log("Added s1");
+    var opts = document.getElementById("v3_tickets");
+    var opt = document.createElement("option");
+        //*<option value="s1">Seasonal Series 1 (s1)</option>
+    opt.value = "s1";
+    opt.textContent = "Seasonal Series 1 (s1)";
+    opts.appendChild(opt);
 }
 
 function ticketHover(ticket, hover)
@@ -363,8 +431,20 @@ function showTickets(series, clear = true, showSeries = false)
         // var img = document.createElement("img");
         // img.src = data.image;
         var img = preloadImages.list[data.image];
-        img.width = 500;
+        if (data.rotation == 0)
+            img.width = 500;
         ticket.appendChild(img);
+        if (data.rotation == 90)
+        {
+            img.height = 500;
+            
+            //img.style = 'transform:rotate(90deg);';
+            //img.style = "transform:translate("+((ticket.width/2)-(img.width/2))+"px,0px)";
+            ticket.height += 500;
+        }
+        img.onerror = () => {
+            console.log("couldn't load url: " + img.src);
+        }
 
         // var div2 = document.createElement("div")
         // ticket.appendChild(div2);

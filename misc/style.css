@@ -13,6 +13,10 @@
   border-color: #bd3232;
 }
 
+coolfont {
+  font-family: 'Courier Prime';
+}
+
 #bobby3D-container {
   width: 200px;
   height: 200px; /* or any desired height */

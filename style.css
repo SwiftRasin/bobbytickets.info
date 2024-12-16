@@ -45,7 +45,7 @@ h1 {
 }
 
 coolfont {
-  font-family: monospace;
+  font-family: 'Courier Prime';
 }
 .padded {
   font-weight: bolder;
@@ -68,4 +68,23 @@ coolfont {
 
 #logopadding {
   margin-top: 0px;
+}
+
+
+a:link {
+  color: rgb(0, 128, 255);
+  background-color: transparent;
+  text-decoration: none;
+}
+
+a:visited {
+  color: rgb(72, 100, 255);
+  background-color: transparent;
+  text-decoration: none;
+}
+
+a:hover {
+  color: rgb(0, 255, 242);
+  background-color: transparent;
+  text-decoration: underline;
 }
