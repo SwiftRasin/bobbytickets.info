@@ -3,3 +3,7 @@
 * * version 0.2 (12/8/24)
     - added a "scary gamble" button, that only chooses the highest or lowest multiplier.
     - also added animations for extreme wins (high rolls) or losses (low rolls).
+* * version 0.3 (12/19/24)
+    - added a reset button if you lose enough money.
+    - ^ "bankrupt"
+    - added a "10x or nothing" gambling button that will only multiply by 10, or by 0.

@@ -1,4 +1,4 @@
-let title,span,button,button2,realNumber,range,money,state,scary,countdown,stateInc;//,font
+let title,span,button,button2,button3,realNumber,range,money,state,scary,countdown,stateInc;//,font
 /*images*/ let happy,good,tense,sad,bad,great,idleH,idleS,idleG; //idle_happy, idle_sad
 
 range = [1,20];
@@ -35,16 +35,36 @@ function setup() {
     span = document.getElementById("money");
     button = document.getElementById("gamble");
     button2 = document.getElementById("gamble2");
+    button3 = document.getElementById("gamble3");
     //font = loadFont("../../monospace.ttf");
     console.log(span);
     console.log(span.children[0]);
     button.onclick = () => {
         if (state == "idle" || state == "gambled")
             switchState("gambling");
+        if (state == "recover")
+        {
+            money = 10;
+            switchState("idle");
+        }
     }
     button2.onclick = () => {
         if (state == "idle" || state == "gambled")
             switchState("intense gambling");
+        if (state == "recover")
+        {
+            money = 10;
+            switchState("idle");
+        }
+    }
+    button3.onclick = () => {
+        if (state == "idle" || state == "gambled")
+            switchState("10x or nothing");
+        if (state == "recover")
+        {
+            money = 10;
+            switchState("idle");
+        }
     }
     //textFont(font);
 }
@@ -61,6 +81,8 @@ function draw() {
     scary = doRandom(1);//Math.floor(randomNumber(range[0],range[1]))/10;
     if (state == "intense gambling")
         scary = intense();
+    if (state == "10x or nothing")
+        scary = tenNothing();
     background(50);
     textSize(25);
     textAlign("right","center");
@@ -71,12 +93,14 @@ function draw() {
         case "idle":
             textSize(100);
             textAlign("center","center");
-            if ((realNumber >= 1 && realNumber < (range[1]/10)) || realNumber == 0)
-                image(idleH, 200-idleH.width/2,200-idleH.height/2);
-            else if (realNumber < 1)
+            if (realNumber < 1)
                 image(idleS, 200-idleS.width/2,200-idleS.height/2);
             else if (realNumber == (range[1]/10))
                 image(idleG, 200-idleG.width/2,200-idleG.height/2);
+            if ((realNumber >= 1 && realNumber < (range[1]/10)))
+                image(idleH, 200-idleH.width/2,200-idleH.height/2);
+            else
+                image(idleH, 200-idleH.width/2,200-idleH.height/2);
 
             //text("😀", 200,200);
             break;
@@ -96,6 +120,14 @@ function draw() {
             textSize(50);
             text("\n\n\n\n\n"+countdown, 200,200);
             break;
+        case "10x or nothing":
+            textSize(75);
+            textAlign("center","center");
+            image(tense, 200-tense.width/2,200-tense.height/2);
+            text("\nx"+scary, 200,250);
+            textSize(50);
+            text("\n\n\n\n\n"+countdown, 200,200);
+            break;
         case "gambled":
             textSize(75);
             textAlign("center","center");
@@ -103,9 +135,9 @@ function draw() {
                 image(happy, 200-happy.width/2,200-happy.height/2);
             else if (realNumber == 1)
                 image(good, 200-good.width/2,200-good.height/2);
-            else if (realNumber == (range[1]/10))
+            else if (realNumber == (range[1]/10) || realNumber == 10)
                 image(great, 200-great.width/2,200-great.height/2);
-            else if (realNumber == (range[0]/10))
+            else if (realNumber == (range[0]/10) || realNumber == 0)
                 image(bad, 200-bad.width/2,200-bad.height/2);
             else
                 image(sad, 200-sad.width/2,200-sad.height/2);
@@ -116,9 +148,24 @@ function draw() {
             textSize(20);
             text("gamble again?", 200,375);
             break;
+        case "recover":
+            textSize(75);
+            textAlign("center","center");
+            image(sad, 200-sad.width/2,200-sad.height/2);
+            // textSize(50);
+            // text("\n\n\n\n\n"+countdown, 200,200);
+            text("\nbankrupt", 200,260);
+            textSize(20);
+            text("you've lost all of your money.\npress the 'gamble' button to reset.", 200,375);
+            break;
     }
     image(title,0,0);
-    span.children[0].textContent = "money: " + Math.floor(money*10000)/10000 + "ß";
+    var calcMoney = Math.floor(money*10000)/10000;
+    span.children[0].textContent = "money: " + calcMoney + "ß";
+    if (calcMoney == 0 && state != "recover")
+    {
+        switchState("recover");
+    }
     localStorage.setItem("gambling_money", money);
     if (keyIsDown(82/*r*/) && keyIsDown(16/*left shift*/)) {
         money = 10;
@@ -136,6 +183,11 @@ function coin()
 function intense()
 {
     return coin() ? (range[0]/10) : (range[1]/10);
+}
+
+function tenNothing()
+{
+    return coin() ? (0) : (10);
 }
 
 function switchState(newState) {
@@ -177,6 +229,24 @@ function switchState(newState) {
                     realNumber = range[1]/10;
                 if (losing)
                     realNumber = range[0]/10;
+                money = money * realNumber;
+                switchState("gambled");
+            },3000);
+            break;
+        case "10x or nothing":
+            countdown = 3;
+            setTimeout(() => {
+                countdown = 2;
+                setTimeout(() => {
+                    countdown = 1;
+                },1000);
+            },1000);
+            setTimeout(() => {
+                realNumber = tenNothing();
+                if (cheating)
+                    realNumber = 10;
+                if (losing)
+                    realNumber = 0;
                 money = money * realNumber;
                 switchState("gambled");
             },3000);

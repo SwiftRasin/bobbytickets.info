@@ -303,11 +303,12 @@ function process(code,force = false) {
     switch (code)
     {
         case "s1":
-            if (!secrets["s1"].unlocked || force) {
+            if (!secrets["s1"].unlocked) {
                 secrets["s1"].unlocked = true;
-                add_s1();
+                localStorage.setItem("gambling_money",parseFloat(localStorage.getItem("gambling_money"))+500);
+                //add_s1();
                 result.style = "color:rgb(78, 255, 116); font-weight: 700;";
-                result.textContent = "granted!";                
+                result.textContent = "500 bobbium awarded!";                
             }
 
             break;
