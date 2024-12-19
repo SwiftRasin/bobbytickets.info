@@ -300,7 +300,7 @@ function draw()
 
 function process(code,force = false) {
     var result = document.getElementById("secret_result");
-    switch (code)
+    switch (code.toLowerCase())
     {
         case "s1":
             if (!secrets["s1"].unlocked) {
