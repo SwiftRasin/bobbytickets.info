@@ -126,7 +126,7 @@ var bobby_tickets = {
         "what": makeTicket("what", "5a", "what", 24, true, 1),
     },
     "seriess1": {
-        "available": true,
+        "available": false,
 
         "elf bobby": makeTicket("elf bobby", "s1", "elf bobby", 12, true, 1),
         "SSK": makeTicket("santa bobby, sinterklaas bobby, & krampus bobby", "s1", "3WAY SSK", 6, true, 10),
