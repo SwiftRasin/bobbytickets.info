@@ -42,6 +42,12 @@ function bye_ls()
 
 
 var bobby_tickets = {
+    "seriesBILL CLINTON": {
+        "available": false,
+
+        "BILL CLINTON": makeTicket("BILL CLINTON", "BILL CLINTON", "BILL CLINTON", 0, false, 3),
+        
+    },
     "series1": {
         "available": false,
 
@@ -131,11 +137,25 @@ var bobby_tickets = {
         "tonguestuck": makeTicket("tonguestuck", "s1", "tonguestuck", 12, true, 4, 90),
         "icefishing": makeTicket("icefishing", "s1", "icefishing", 12, true, 2)
         
+    },
+    "seriese1": {
+        "available": true,
+
+        "Gibbon Falls": makeTicket("Gibbon Falls", "e1", "Gibbon Falls", 12, true, 3),
+        "Graceland": makeTicket("Graceland", "e1", "Graceland", 12, true, 3),
+        "Honolulu": makeTicket("Hololulu", "e1", "Honolulu", 12, true, 3),
+        "Los Angeles": makeTicket("Los Angeles", "e1", "Los Angeles", 12, true, 3),
+        "Mount Rushmore": makeTicket("Mount Rushmore", "e1", "Mount Rushmore", 12, true, 3),
+        "New York": makeTicket("New York", "e1", "New York", 12, true, 3),
+        "the Grand Canyon": makeTicket("the Grand Canyon", "e1", "the Grand Canyon", 12, true, 3),
+        "the Washington Monument": makeTicket("the Washington Monument", "e1", "the Washington Monument", 12, true, 3)
+        
     }
 }
 
 var secrets = {
-    "s1": {unlocked: false}
+    "s1": {unlocked: false},
+    "BILL CLINTON": {unlocked: false}
 };
 
 var curSeries = "none";
@@ -278,8 +298,14 @@ function draw()
     {
         console.log("initializing secrets...");
         start = true;
-        if (localStorage.getItem("bobbyco_secrets") != null)
-            secrets = JSON.parse(localStorage.getItem("bobbyco_secrets"));
+        if (localStorage.getItem("bobbyco_secrets") != null) {
+            var localSecrets = JSON.parse(localStorage.getItem("bobbyco_secrets"));
+            var localKeys = Object.keys(localSecrets);
+            for (var i = 0; i < localKeys.length; i++)
+            {
+                secrets[localKeys[i]] = localSecrets[localKeys[i]];
+            }
+        }
         //console.log(secrets);
         var allSecrets = Object.keys(secrets);
         //console.log(allSecrets.length + " saved secrets found!");
@@ -300,6 +326,7 @@ function draw()
 
 function process(code,force = false) {
     var result = document.getElementById("secret_result");
+    console.log("processing code \"" + code + "\"....");
     switch (code.toLowerCase())
     {
         case "s1":
@@ -312,6 +339,18 @@ function process(code,force = false) {
             }
 
             break;
+        case "e1":
+            if (!secrets["BILL CLINTON"].unlocked) {
+                secrets["BILL CLINTON"].unlocked = true;
+                // localStorage.setItem("gambling_money",parseFloat(localStorage.getItem("gambling_money"))+500);
+                add_BILL_CLINTON();
+                result.style = "color:rgb(78, 255, 116); font-weight: 700;";
+                result.textContent = "BILL CLINTON";                
+            }
+
+            break;
+        case "bill clinton":
+            add_BILL_CLINTON();
     }
     //console.log(secrets);
     localStorage.setItem("bobbyco_secrets", JSON.stringify(secrets));
@@ -325,6 +364,20 @@ function add_s1() {
     opt.value = "s1";
     opt.textContent = "Seasonal Series 1 (s1)";
     opts.appendChild(opt);
+}
+function add_BILL_CLINTON() {
+    console.log("Added BILL CLINTON");
+    var opts = document.getElementById("seriesDD");
+    var sec = document.createElement("optgroup");
+    var sep = document.createElement("hr");
+    sec.label = "BILL CLINTON";
+    var opt = document.createElement("option");
+        //*<option value="s1">BILL CLINTON (BILL CLINTON)</option>
+    opt.value = "BILL CLINTON";
+    opt.textContent = "BILL CLINTON (BILL CLINTON)";
+    opts.appendChild(sep);
+    opts.appendChild(sec);
+    sec.appendChild(opt);
 }
 
 function ticketHover(ticket, hover)
@@ -349,8 +402,12 @@ function showAllTickets(clear = true)
         clearTickets();
     var allSeries = Object.keys(bobby_tickets);
     console.log(allSeries);
-    for (var i = 0; i < allSeries.length; i++)
+    for (var i = 0; i < allSeries.length; i++) {
+        //console.log("BILL CLINTON");
+        if (allSeries[i] == "seriesBILL CLINTON")
+            continue;
         showTickets(allSeries[i], false, true);
+    }
 }
 
 function showTickets(series, clear = true, showSeries = false)
