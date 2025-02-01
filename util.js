@@ -71,6 +71,7 @@ function bar()
     div.appendChild(createBarOption("mail","contact/contact.html",100,"contact info"));
     div.appendChild(createBarOption("news","news/news.html",100,"bobbyco news"));
     div.appendChild(createBarOption("misc", "misc/misc.html",90,"misc"))
+    div.appendChild(createBarOption("history", "history/history.html",90,"history"))
 
     container.appendChild(div);
 }
