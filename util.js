@@ -68,10 +68,10 @@ function bar()
     
     div.appendChild(createBarOption("home","",65,"home page"));
     div.appendChild(createBarOption("checklist","checklist/checklist.html",75,"checklist page"));
-    div.appendChild(createBarOption("mail","contact/contact.html",100,"contact info"));
+    // div.appendChild(createBarOption("mail","contact/contact.html",100,"contact info"));
     div.appendChild(createBarOption("news","news/news.html",100,"bobbyco news"));
-    div.appendChild(createBarOption("misc", "misc/misc.html",90,"misc"))
-    div.appendChild(createBarOption("history", "history/history.html",90,"history"))
+    div.appendChild(createBarOption("history", "history/history.html",90,"history"));
+    div.appendChild(createBarOption("misc", "misc/misc.html",90,"misc"));
 
     container.appendChild(div);
 }

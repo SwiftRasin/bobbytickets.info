@@ -2,6 +2,7 @@
 <html>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.10.0/p5.js"></script>
   <script src="https://ajax.googleapis.com/ajax/libs/webfont/1.6.26/webfont.js"></script>
+  <script src="vault.js"></script>
   <script src="main.js"></script>
   <script src="../util.js"></script>
   <head>
@@ -31,11 +32,40 @@
     <button onclick="showTickets('4a')"><coolfont>series 4a</coolfont></button>
     <button onclick="showTickets('4b')"><coolfont>series 4b</coolfont></button>
     <button onclick="showTickets('5a')"><coolfont>series 5a</coolfont></button> -->
+    <script>
+      function DDStuff(val)
+      {
+        document.getElementById('randAmt').disabled = true;
+        if (val != 'none' && val != 'all' && val != 'random') 
+        {
+          showTickets(val)
+        } 
+        else if (val == 'all') 
+        {
+          showAllTickets()
+        }
+        else if (val == 'random') 
+        {
+          document.getElementById('randAmt').disabled = false;
+          clearTickets()
+          for (var i = 0; i < document.getElementById('randAmt').value; i++)
+          {
+            showTicket(randomTicket())
+          }
+          
+        }
+        else
+        {
+          clearTickets(true, this)
+        }
+      }
+    </script>
     <p class="slides" id="slides">
       <label for="seriesDD"><coolfont>series: </coolfont> </label>
-        <select style="font-family: 'Courier Prime'" name="seriesPicker" id="seriesDD" onchange="if (this.value != 'none' && this.value != 'all') {showTickets(this.value)} else if (this.value == 'all') {showAllTickets()} else {clearTickets(true, this)}">
+        <select style="font-family: 'Courier Prime'" name="seriesPicker" id="seriesDD" onchange="DDStuff(this.value)">
           <option value="none">(None)</option>
           <option value="all">All</option>
+          <option value="random">Random (Experimental)</option>
           <hr />
           <optgroup label="Legacy (v1)">
             <option value="1">Series 1</option>
@@ -60,6 +90,8 @@
         </select>
         <!-- <div></div> -->
 
+        <input id="randAmt" type="number" min="1" value="1" max="50" disabled="true"></input>
+        <button onclick="DDStuff(document.getElementById('seriesDD').value)"><coolfont>refresh tickets</coolfont></button>
         <button onclick="clear_list()"><coolfont><b>clear checklist</b></coolfont></button>
         <button onclick="import_list()"><coolfont>import checklist</coolfont></button>
         <button onclick="export_list()"><coolfont>export checklist</coolfont></button>
