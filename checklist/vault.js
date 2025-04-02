@@ -119,6 +119,27 @@ var vault_bobby_tickets = {
         "the Grand Canyon": makeTicket("the Grand Canyon", "e1", "the Grand Canyon", 36, true, 3),
         "the Washington Monument": makeTicket("the Washington Monument", "e1", "the Washington Monument", 36, true, 3)
         
+    },
+    "series5b": {
+        "available": true,
+
+        "alien bobby": makeTicket("alien bobby", "5b", "alien bobby", 48, true, 3),
+        "bald bobby": makeTicket("bald bobby", "5b", "bald bobby", 48, true, 1),
+        "biker bobby": makeTicket("biker bobby", "5b", "biker bobby", 24, true, 10),
+        "bob": makeTicket("bob", "5b", "bob", 48, true, 1),
+        "boxing bobby": makeTicket("boxing bobby", "5b", "boxing bobby", 48, true, 3),
+        "COLD AS ICE": makeTicket("COLD AS ICE", "5b", "COLD AS ICE", 32, true, 5),
+        "cowboy bobby": makeTicket("cowboy bobby", "5b", "cowboy bobby", 48, true, 3),
+        "draw your own": makeTicket("draw your own", "5b", "draw your own", 48, true, "_"),
+        "irish bobby": makeTicket("irish bobby", "5b", "irish bobby", 48, true, 2),
+        "mail bobby": makeTicket("mail bobby", "5b", "mail bobby", 48, true, 1),
+        "MC bobby": makeTicket("MC bobby", "5b", "MC bobby", 48, true, 3),
+        "officer bobby": makeTicket("officer bobby", "5b", "officer bobby", 48, true, 2),
+        "pirate bobby": makeTicket("pirate bobby", "5b", "pirate bobby", 48, true, 2),
+        "robobby": makeTicket("robobby", "5b", "robobby", 48, true, 3),
+        "scared bobby": makeTicket("scared bobby", "5b", "scared bobby", 48, true, 1),
+        "skater bobby": makeTicket("skater bobby", "5b", "skater bobby", 24, true, 10),
+
     }
 }
 function randomTicket(exclude = ["seriesBILL CLINTON"])

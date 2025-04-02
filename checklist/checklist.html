@@ -80,6 +80,7 @@
           <hr />
           <optgroup id="v3_tickets" label="Current (v3)">
             <option value="5a">Series 5a</option>
+            <option value="5b">Series 5b</option>
           </optgroup>
           <hr />
           <optgroup id="vS_tickets" label="Spinoffs">
@@ -98,7 +99,7 @@
         <div class="slides" style="transform: translate(0,-30px); font-size: 50%; font-family: 'Courier Prime'">
           <label for="secrets">secret-inator</label>
           <input id="secrets" style="font-family: 'Courier Prime'"></input>
-          <button id="secret" onclick="process(document.getElementById('secrets').value)"><coolfont>confirm</coolfont></button>
+          <button id="secret" onclick="process(document.getElementById('secrets').value, true)"><coolfont>confirm</coolfont></button>
           <button id="secret" onclick="localStorage.removeItem('bobbyco_secrets');window.location.reload();"><coolfont><b>relock all secrets </b><i>(reload)</i></coolfont></button>
           <span id="secret_result"></span>
         </div>

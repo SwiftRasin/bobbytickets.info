@@ -1,3 +1,5 @@
+isChecklist = true;
+
 function preloadImages(array) { //! yoinked and modified from https://stackoverflow.com/questions/10240110/how-do-you-cache-an-image-in-javascript
     if (!preloadImages.list) {
         preloadImages.list = {};
@@ -42,11 +44,6 @@ function bye_ls()
 
 
 var bobby_tickets = vault_bobby_tickets;
-
-var secrets = {
-    "s1": {unlocked: false},
-    "BILL CLINTON": {unlocked: false}
-};
 
 var curSeries = "none";
 
@@ -186,16 +183,8 @@ function draw()
     }
     if (!start)
     {
-        console.log("initializing secrets...");
         start = true;
-        if (localStorage.getItem("bobbyco_secrets") != null) {
-            var localSecrets = JSON.parse(localStorage.getItem("bobbyco_secrets"));
-            var localKeys = Object.keys(localSecrets);
-            for (var i = 0; i < localKeys.length; i++)
-            {
-                secrets[localKeys[i]] = localSecrets[localKeys[i]];
-            }
-        }
+        init_secrets();
         //console.log(secrets);
         var allSecrets = Object.keys(secrets);
         //console.log(allSecrets.length + " saved secrets found!");
@@ -205,7 +194,7 @@ function draw()
         {
             console.log(allSecrets[i] + " " + secrets[allSecrets[i]].unlocked);
             if (secrets[allSecrets[i]].unlocked)
-                process(allSecrets[i],true);
+                process(allSecrets[i]);
             var result = document.getElementById("secret_result");
             result.style = "";
             result.textContent = "";
@@ -241,6 +230,22 @@ function process(code,force = false) {
             break;
         case "bill clinton":
             add_BILL_CLINTON();
+
+        case "5b":
+            if (!force) {
+                //addBar(createBarOption("question", "question/question.html",90,"question"));
+                // localStorage.setItem("gambling_money",parseFloat(localStorage.getItem("gambling_money"))+500);
+                // add_BILL_CLINTON();           
+            }
+            if (force && !secrets["5b"].unlocked) {
+                secrets["5b"].unlocked = true;
+                result.style = "color:rgb(78, 255, 116); font-weight: 700;";
+                result.textContent = "you'll see soon...";
+                addBar(createBarOption("question", "question/question.html",90,"question"));
+            }
+
+
+            break;
     }
     //console.log(secrets);
     localStorage.setItem("bobbyco_secrets", JSON.stringify(secrets));

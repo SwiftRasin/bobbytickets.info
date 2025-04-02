@@ -1,3 +1,6 @@
+var isChecklist = false;
+var initalized = false;
+
 WebFont.load({
     google: {
         families: ['Courier Prime:400,400i,700,700i']
@@ -7,6 +10,38 @@ WebFont.load({
 const path = window.location.pathname;
 
 const isHome = path === "/" || path === "/index.html" || path === "/index.htm" || path === "/bobbytickets.info/" || path === "/bobbytickets.info/index.html";
+
+let barDiv;
+
+var secrets = {
+    "s1": {unlocked: false},
+    "BILL CLINTON": {unlocked: false},
+    "5b": {unlocked: false}
+};
+
+function init_secrets() {
+    initalized = true;
+    console.log("initializing secrets...");
+    if (localStorage.getItem("bobbyco_secrets") != null) {
+        var localSecrets = JSON.parse(localStorage.getItem("bobbyco_secrets"));
+        var localKeys = Object.keys(localSecrets);
+        for (var i = 0; i < localKeys.length; i++)
+        {
+            secrets[localKeys[i]] = localSecrets[localKeys[i]];
+            if (secrets["5b"].unlocked)
+                addBar(createBarOption("question", "question/question.html",90,"question"));
+        }
+    }
+}
+
+function setup() {
+    noCanvas();
+}
+
+function draw() {
+    if (!isChecklist && !initalized)
+        init_secrets();
+}
 
 function subpage(dir)
 {
@@ -22,6 +57,10 @@ function subpage(dir)
             dir = "/bobbytickets.info/";
         window.location.href = window.location.origin + dir;
     }
+}
+
+function addBar(element) {
+    barDiv.appendChild(element);
 }
 
 function bar()
@@ -72,8 +111,11 @@ function bar()
     div.appendChild(createBarOption("news","news/news.html",100,"bobbyco news"));
     div.appendChild(createBarOption("history", "history/history.html",90,"history"));
     div.appendChild(createBarOption("misc", "misc/misc.html",90,"misc"));
+    // div.appendChild(createBarOption("question", "question/question.html",90,"question"));
 
     container.appendChild(div);
+
+    barDiv = div;
 }
 
 function createBarOption(img,page,width,tooltip)
