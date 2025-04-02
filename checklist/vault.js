@@ -108,7 +108,7 @@ var vault_bobby_tickets = {
         
     },
     "seriese1": {
-        "available": true,
+        "available": false,
 
         "Gibbon Falls": makeTicket("Gibbon Falls", "e1", "Gibbon Falls", 36, true, 3),
         "Graceland": makeTicket("Graceland", "e1", "Graceland", 36, true, 3),
