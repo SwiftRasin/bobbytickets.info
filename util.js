@@ -19,6 +19,32 @@ var secrets = {
     "5b": {unlocked: false}
 };
 
+var deals = {
+    "cd-dj": {bought: false, cost: 1000},
+    "cd-doom": {bought: false, cost: 500},
+    "cd-funny": {bought: false, cost: 1000}
+}
+
+function init_deals() {
+    console.log("initializing deals...");
+    if (localStorage.getItem("bobby_shop") == "[object Object]")
+        localStorage.setItem("bobby_shop", JSON.stringify(deals));
+    if (localStorage.getItem("bobby_shop") != null) {
+        var localDeals = JSON.parse(localStorage.getItem("bobby_shop"));
+        var localKeys = Object.keys(localDeals);
+        for (var i = 0; i < localKeys.length; i++)
+        {
+            deals[localKeys[i]] = localDeals[localKeys[i]];
+        }
+    }
+}
+
+function randomNumber(min, max) {
+    const minCeiled = Math.ceil(min);
+    const maxFloored = Math.floor(max);
+    return Math.floor(Math.random() * (maxFloored - minCeiled + 1) + minCeiled); // The maximum is inclusive and the minimum is inclusive
+}
+
 function init_secrets() {
     initalized = true;
     console.log("initializing secrets...");
@@ -28,8 +54,8 @@ function init_secrets() {
         for (var i = 0; i < localKeys.length; i++)
         {
             secrets[localKeys[i]] = localSecrets[localKeys[i]];
-            if (secrets["5b"].unlocked)
-                addBar(createBarOption("question", "question/question.html",90,"question"));
+            // if (secrets["5b"].unlocked)
+            //     addBar(createBarOption("question", "question/question.html",90,"question"));
         }
     }
 }
@@ -39,8 +65,10 @@ function setup() {
 }
 
 function draw() {
-    if (!isChecklist && !initalized)
+    if (!isChecklist && !initalized) {
+        init_deals();
         init_secrets();
+    }
 }
 
 function subpage(dir)
@@ -111,6 +139,7 @@ function bar()
     div.appendChild(createBarOption("news","news/news.html",100,"bobbyco news"));
     div.appendChild(createBarOption("history", "history/history.html",90,"history"));
     div.appendChild(createBarOption("misc", "misc/misc.html",90,"misc"));
+    div.appendChild(createBarOption("question", "question/question.html",90,"question"));
     // div.appendChild(createBarOption("question", "question/question.html",90,"question"));
 
     container.appendChild(div);

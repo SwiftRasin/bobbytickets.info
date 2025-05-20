@@ -3,6 +3,7 @@
   <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.10.0/p5.js"></script>
   <script src="https://ajax.googleapis.com/ajax/libs/webfont/1.6.26/webfont.js"></script>
   <script src="../util.js"></script>
+  <script src="question.js"></script>
   <head>
     <!-- some embed stuff -->
     <meta property="og:title" content="the bobby ticket website">
@@ -13,7 +14,7 @@
     <!-- some embed stuff -->
 
 
-    <title >???</title>
+    <title>bobby's shop</title>
     <link rel="stylesheet" href="../checklist/style.css">
     <link rel="stylesheet" href="style.css">
     <link rel="icon" href="favicon.png" onerror="this.href='../favicon.png'">
@@ -32,17 +33,63 @@
 
   <div class="slides">
 
-    <h1 class="slides" id="logopadding"><coolfont style="font-size: 50%; color: #6c6c6c"></coolfont><coolfont>first look at the in-website shop!</coolfont></h1>
-    <img src="../img/shop/bobby-shop.gif" width="20%"></img>
+    <h1 class="slides" id="logopadding"><coolfont style="font-size: 50%; color: #6c6c6c"></coolfont><coolfont>bobby's shop</coolfont></h1>
+    <div style="display: flex">
+      <img src="../img/shop/bobby-shop.gif" width="15%"></img>
+      <div id="dialogue">
+        <coolfont2 id="dialogueText">...</coolfont2>
+      </div>
+    </div>
     <br>
-    <coolfont>this is the shopkeeper. (as you can see, he's quite tired.)</coolfont>
+    <button id="buy" style="scale: 2; transform-origin: left;"><coolfont>buy</coolfont></button>
+    <button id="sell" style="translate: 100% ;scale: 2; transform-origin: left;"><coolfont>sell</coolfont></button>
+    <button id="talk" style="translate: 200% ;scale: 2; transform-origin: left;"><coolfont>talk</coolfont></button>
+    <br>
+    <br>
+    <button id="buyfr" class="hidden" style="scale: 2; transform-origin: left;">confirm purchase</button>
+    <br>
+
+    <div id="talker" class="choicer">
+      <button id="talker-who">Who are you?</button>
+      <button id="talker-series6">When does series 6 release?</button>
+      <button id="talker-where">Where did you get all of this?</button>
+      <button id="talker-gambling">About Gambling</button>
+    </div>
+
+    <div id="buyer" class="choicer">
+      <button id="buyer-dj">CD labeled "dj bobby's theme" (ß1000)</button>
+      <button id="buyer-doom">CD labeled "we're doomed" (ß500)</button>
+      <button id="buyer-funny">CD labeled "funny song" (ß1000)</button>
+    </div>
+
+    <br>
+    <br>
+    <h1 class="slides" id="logopadding"><coolfont style="font-size: 50%; color: #6c6c6c"></coolfont><coolfont>cd player</coolfont></h1>
+    <div class="cd" width="20px">
+      <img id="disc" src="../img/shared/disc.png" width="15%">
+
+      <div style="display: grid;">
+        <audio id="cd-player" controls src="../mus/demo.mp3"></audio>
+      </div>
+      <div id="cds" class="choicer">
+        <button id="cd-demo">CD labeled "demo"</button>
+        <button id="cd-dj">CD labeled "dj bobby's theme"</button>
+        <button id="cd-doom">CD labeled "we're doomed"</button>
+        <button id="cd-funny">CD labeled "funny song"</button>
+      </div>
+      <coolfont style="width: 50%" id="mus-name">CD labeled "demo"</coolfont>
+      
+    </div>
+    
+    
+    <!-- <coolfont>this is the shopkeeper. (as you can see, he's quite tired.)</coolfont>
     <br>
     <coolfont>...please don't give him a hard time.</coolfont>
     <br>
     <br>
     <coolfont>he's going to start selling items very soon.</coolfont>
     <br>
-    <coolfont>keep gambling so you can afford his items!</coolfont>
+    <coolfont>keep gambling so you can afford his items!</coolfont> -->
     <!-- <coolfont style="padding-top: 500px; padding-left: 50px; color: #ffffff"> <b>Contact Us: bobbyco.official@gmail.com</b> </coolfont> -->
     <!-- <div></div> -->
     <!-- <coolfont style="padding-left: 50px; color: #ffffff"> <b>We're hiring: [<a href="https://forms.gle/rCgxpfMELa6Af8NN6">application here</a>] </b> </coolfont> -->

@@ -1,14 +1,73 @@
 .logo {
-    background-color: #6e3cd1;
-    padding-top: 10px;
-    padding-left: 10px;
-    padding-right: 10px;
-    padding-bottom: 3px;
-    
-    /* border-top-right-radius: 12px; */
-    /* border-bottom-right-radius: 12px; */
-    /* border-top: solid #000; */
-    border-bottom: solid #000;
-    border-width: 3px;
-    border-color: #3f1b88;
-  }
+  background-color: #6e3cd1;
+  padding-top: 10px;
+  padding-left: 10px;
+  padding-right: 10px;
+  padding-bottom: 3px;
+  
+  /* border-top-right-radius: 12px; */
+  /* border-bottom-right-radius: 12px; */
+  /* border-top: solid #000; */
+  border-bottom: solid #000;
+  border-width: 3px;
+  border-color: #3f1b88;
+}
+
+#dialogue {
+  background-color: rgb(33, 33, 33);
+  width: fit-content;
+  height: fit-content;
+  padding-right: 50px;
+  border-top-right-radius: 25px;
+  border-bottom-right-radius: 25px;
+  border-top-left-radius: 10px;
+  border-bottom-left-radius: 10px;
+  word-spacing: normal;
+  /* animation: normal_ticket 1s ease-in-out; */
+}
+
+.choicer {
+  background-color: rgb(33, 33, 33);
+  width: fit-content;
+  height: fit-content;
+  padding-right: 50px;
+  border-top-right-radius: 25px;
+  border-bottom-right-radius: 25px;
+  border-top-left-radius: 10px;
+  border-bottom-left-radius: 10px;
+  word-spacing: normal;
+  display: grid;
+  /* animation: normal_ticket 1s ease-in-out; */
+}
+
+.cd {
+  background-color: rgb(33, 33, 33);
+  width: fit-content;
+  height: fit-content;
+  padding-left: 50px;
+  padding-top: 50px;
+  padding-bottom: 50px;
+  border-top-right-radius: 25px;
+  border-bottom-right-radius: 25px;
+  border-top-left-radius: 10px;
+  border-bottom-left-radius: 10px;
+  word-spacing: normal;
+  display: flex;
+  /* animation: normal_ticket 1s ease-in-out; */
+}
+
+.hidden {
+  visibility: hidden;
+}
+
+coolfont2 {
+  font-family: 'Courier Prime';
+  white-space: pre-line;
+  padding-left: 10px;
+}
+
+.overlay {
+  position: absolute;
+  bottom: 0;
+  right: 0;
+}

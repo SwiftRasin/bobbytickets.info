@@ -69,6 +69,11 @@ function setup() {
     //textFont(font);
 }
 
+function keyPressed() {
+    if (keyCode == 221 && keyIsDown(16/*left shift*/))
+        money += 1000;
+}
+
 function draw() {
     cheating = false;
     losing = false;
@@ -76,6 +81,8 @@ function draw() {
         cheating = true;
     if (keyIsDown(76/*l*/) && keyIsDown(16/*left shift*/))
         losing = true;
+    // if (keyIsDown(221/*]*/) && keyIsDown(16/*left shift*/))
+    //     money += 1000;
     fill("white");
     noSmooth();
     scary = doRandom(1);//Math.floor(randomNumber(range[0],range[1]))/10;

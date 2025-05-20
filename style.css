@@ -1,5 +1,5 @@
 body {
-  background: rgb(22, 22, 22);
+  background: #161616;
   color: rgb(199, 199, 199);
   font-size: 200%;
 }
@@ -47,6 +47,13 @@ h1 {
 coolfont {
   font-family: 'Courier Prime';
 }
+#coolfont {
+  font-family: 'Courier Prime';
+}
+.coolfont {
+  font-family: 'Courier Prime';
+}
+
 .padded {
   font-weight: bolder;
   padding-left: 50px;

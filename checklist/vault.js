@@ -121,7 +121,7 @@ var vault_bobby_tickets = {
         
     },
     "series5b": {
-        "available": true,
+        "available": false,
 
         "alien bobby": makeTicket("alien bobby", "5b", "alien bobby", 48, true, 3),
         "bald bobby": makeTicket("bald bobby", "5b", "bald bobby", 48, true, 1),

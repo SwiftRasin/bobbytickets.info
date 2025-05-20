@@ -170,7 +170,6 @@ function setup() {
 var start = false;
 function draw()
 {
-    
     for (var i = 0; i < alltickets.length; i++)
     {
         if (alltickets[i].children[0].checked)
@@ -241,7 +240,7 @@ function process(code,force = false) {
                 secrets["5b"].unlocked = true;
                 result.style = "color:rgb(78, 255, 116); font-weight: 700;";
                 result.textContent = "you'll see soon...";
-                addBar(createBarOption("question", "question/question.html",90,"question"));
+                // addBar(createBarOption("question", "question/question.html",90,"question"));
             }
 
 
