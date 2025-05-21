@@ -38,12 +38,21 @@ function init_buying() {
             }
         }
     }
-    if (deals["cd-dj"].bought)
-        document.getElementById("buyer-dj").className = "hidden";
-    if (deals["cd-doom"].bought)
-        document.getElementById("buyer-doom").className = "hidden";
-    if (deals["cd-funny"].bought)
-        document.getElementById("buyer-funny").className = "hidden";
+    
+    var keys = Object.keys(deals);
+    for (var i = 0; i < keys.length; i++)
+    {
+        console.log("buyer-" + keys[i]);
+        if (deals[keys[i]].bought)
+            document.getElementById("buyer-" + keys[i].replace("cd-", "")).className = "hidden";
+    }
+
+    // if (deals["cd-dj"].bought)
+    //     document.getElementById("buyer-dj").className = "hidden";
+    // if (deals["cd-doom"].bought)
+    //     document.getElementById("buyer-doom").className = "hidden";
+    // if (deals["cd-funny"].bought)
+    //     document.getElementById("buyer-funny").className = "hidden";
 }
 
 function buyItem(id) {

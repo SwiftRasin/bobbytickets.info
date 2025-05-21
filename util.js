@@ -22,8 +22,15 @@ var secrets = {
 var deals = {
     "cd-dj": {bought: false, cost: 1000},
     "cd-doom": {bought: false, cost: 500},
-    "cd-funny": {bought: false, cost: 1000}
+    "cd-funny": {bought: false, cost: 1000},
+    "cd-demo2": {bought: false, cost: 50},
+    "cd-cowboy": {bought: false, cost: 100},
+    "cd-bobbytsu": {bought: false, cost: 500},
+    "cd-happy": {bought: false, cost: 1000},
+    "cd-skeptical": {bought: false, cost: 50}
 }
+
+
 
 function init_deals() {
     console.log("initializing deals...");
