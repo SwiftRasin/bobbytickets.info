@@ -145,6 +145,24 @@ function setup() {
                 case "demo":
                     document.getElementById("mus-name").textContent = "CD labeled \"demo\"";
                     break;
+                case "cowboy":
+                    document.getElementById("mus-name").textContent = "CD labeled \"cowboy bobby's theme\"";
+                    break;
+                case "demo2":
+                    document.getElementById("mus-name").textContent = "CD labeled \"demo #2\"";
+                    break;
+                case "bobbytsu":
+                    document.getElementById("mus-name").textContent = "CD labeled \"bobbytsu's theme\"";
+                    break;
+                case "happy":
+                    document.getElementById("mus-name").textContent = "CD labeled \"happy bobby\"";
+                    break;
+                case "skeptical":
+                    document.getElementById("mus-name").textContent = "CD labeled \"skeptical bobby's theme\"";
+                    break;
+                case "bald":
+                    document.getElementById("mus-name").textContent = "CD labeled \"bald bobby's theme\"";
+                    break;
             }
         };
     }

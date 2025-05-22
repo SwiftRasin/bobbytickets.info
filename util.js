@@ -27,7 +27,8 @@ var deals = {
     "cd-cowboy": {bought: false, cost: 100},
     "cd-bobbytsu": {bought: false, cost: 500},
     "cd-happy": {bought: false, cost: 1000},
-    "cd-skeptical": {bought: false, cost: 50}
+    "cd-skeptical": {bought: false, cost: 50},
+    "cd-bald": {bought: false, cost: 25}
 }
 
 
