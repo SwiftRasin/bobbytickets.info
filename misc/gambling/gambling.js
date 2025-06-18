@@ -70,11 +70,17 @@ function setup() {
 }
 
 function keyPressed() {
-    if (keyCode == 221 && keyIsDown(16/*left shift*/))
+    if (keyCode == 221 && keyIsDown(16/*left shift*/)) {
         money += 1000;
+        localStorage.setItem("gambling_money", money);
+    }
 }
 
 function draw() {
+    if (money != localStorage.getItem("gambling_money")) {
+        console.log("money is desynced." + "\nmoney: " + money + "\nlocalStorage \"gambling_money\":" + localStorage.getItem("gambling_money"));
+        money = localStorage.getItem("gambling_money");
+    }
     cheating = false;
     losing = false;
     if (keyIsDown(67/*c*/) && keyIsDown(16/*left shift*/))
@@ -173,7 +179,6 @@ function draw() {
     {
         switchState("recover");
     }
-    localStorage.setItem("gambling_money", money);
     if (keyIsDown(82/*r*/) && keyIsDown(16/*left shift*/)) {
         money = 10;
         localStorage.setItem("gambling_money", 10);
@@ -219,6 +224,7 @@ function switchState(newState) {
                 if (losing)
                     realNumber = range[0]/10;
                 money = money * realNumber;
+                localStorage.setItem("gambling_money", money);
                 switchState("gambled");
             },3000);
             break;
@@ -237,6 +243,7 @@ function switchState(newState) {
                 if (losing)
                     realNumber = range[0]/10;
                 money = money * realNumber;
+                localStorage.setItem("gambling_money", money);
                 switchState("gambled");
             },3000);
             break;
@@ -255,7 +262,9 @@ function switchState(newState) {
                 if (losing)
                     realNumber = 0;
                 money = money * realNumber;
+                localStorage.setItem("gambling_money", money);
                 switchState("gambled");
+                
             },3000);
             break;
         case "gambled":

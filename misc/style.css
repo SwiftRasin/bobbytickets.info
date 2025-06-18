@@ -22,3 +22,17 @@ coolfont {
   height: 200px; /* or any desired height */
   border: 2px solid transparent; /* optional, for visual purposes */
 }
+
+#gambling-container, #wheel-container {
+  background-color: rgb(33, 33, 33);
+  width: fit-content;
+  height: fit-content;
+  border-top-right-radius: 25px;
+  border-bottom-right-radius: 25px;
+  border-top-left-radius: 10px;
+  border-bottom-left-radius: 10px;
+  border-width: 10px;
+  word-spacing: normal;
+  display: grid;
+  /* animation: normal_ticket 1s ease-in-out; */
+}

@@ -312,6 +312,7 @@ function showTickets(series, clear = true, showSeries = false)
     if ((typeof series) == "string" && series.includes("series"))
         series = series.replaceAll("series", "");
     var tickets = Object.keys(bobby_tickets["series"+series]);
+    console.log("showing " + (tickets.length-1) + " tickets");
     for (var i = 0; i < tickets.length; i++)
     {
         if (tickets[i] == "available")
