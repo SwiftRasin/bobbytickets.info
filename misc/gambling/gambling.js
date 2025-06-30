@@ -45,6 +45,7 @@ function setup() {
         if (state == "recover")
         {
             money = 10;
+            localStorage.setItem("gambling_money", 10);
             switchState("idle");
         }
     }
@@ -54,6 +55,7 @@ function setup() {
         if (state == "recover")
         {
             money = 10;
+            localStorage.setItem("gambling_money", 10);
             switchState("idle");
         }
     }
@@ -63,6 +65,7 @@ function setup() {
         if (state == "recover")
         {
             money = 10;
+            localStorage.setItem("gambling_money", 10);
             switchState("idle");
         }
     }
@@ -173,7 +176,7 @@ function draw() {
             break;
     }
     image(title,0,0);
-    var calcMoney = Math.floor(money*10000)/10000;
+    var calcMoney = Math.floor(localStorage.getItem("gambling_money")*10000)/10000;
     span.children[0].textContent = "money: " + calcMoney + "ß";
     if (calcMoney == 0 && state != "recover")
     {
