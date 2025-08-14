@@ -56,6 +56,7 @@ function init_buying() {
 }
 
 function buyItem(id) {
+    console.log("[bobbyco]: buyItem(" + id + ") called");
     document.getElementById("buyfr").className = "hidden";
     if (deals[id] != null) {
         if (!deals[id].bought && (localStorage.getItem("gambling_money") >= deals[id].cost)) {
@@ -162,6 +163,9 @@ function setup() {
                     break;
                 case "bald":
                     document.getElementById("mus-name").textContent = "CD labeled \"bald bobby's theme\"";
+                    break;
+                case "lost origin":
+                    document.getElementById("mus-name").textContent = "CD labeled \"lost origin\"";
                     break;
             }
         };
