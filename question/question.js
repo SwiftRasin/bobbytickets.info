@@ -133,43 +133,76 @@ function setup() {
             cdSong = pointer.srcElement.id.replace("cd-", "");
             playingMusic = false;
             cdPlayer.src = "../mus/" + cdSong + ".mp3";
+            disc.src = "../img/shared/disc.png";
             switch (cdSong) {
                 case "dj":
-                    document.getElementById("mus-name").textContent = "CD labeled \"dj bobby's theme\"";
+                    document.getElementById("mus-name").textContent = "CD labeled \"dj bobby's theme\" (2025)";
                     break;
                 case "doom":
-                    document.getElementById("mus-name").textContent = "CD labeled \"we're doomed\"";
+                    document.getElementById("mus-name").textContent = "CD labeled \"we're doomed\" (2025)";
                     break;
                 case "funny":
-                    document.getElementById("mus-name").textContent = "CD labeled \"funny song\"";
+                    document.getElementById("mus-name").textContent = "CD labeled \"funny song\" (2025)";
                     break;
                 case "demo":
-                    document.getElementById("mus-name").textContent = "CD labeled \"demo\"";
+                    document.getElementById("mus-name").textContent = "CD labeled \"demo\" (2023)";
                     break;
                 case "cowboy":
-                    document.getElementById("mus-name").textContent = "CD labeled \"cowboy bobby's theme\"";
+                    document.getElementById("mus-name").textContent = "CD labeled \"cowboy bobby's theme\" (2024)";
                     break;
                 case "demo2":
-                    document.getElementById("mus-name").textContent = "CD labeled \"demo #2\"";
+                    document.getElementById("mus-name").textContent = "CD labeled \"demo #2\" (2025)";
                     break;
                 case "bobbytsu":
-                    document.getElementById("mus-name").textContent = "CD labeled \"bobbytsu's theme\"";
+                    document.getElementById("mus-name").textContent = "CD labeled \"bobbytsu's theme\" (2024)";
                     break;
                 case "happy":
-                    document.getElementById("mus-name").textContent = "CD labeled \"happy bobby\"";
+                    document.getElementById("mus-name").textContent = "CD labeled \"happy bobby\" (2024)";
                     break;
                 case "skeptical":
-                    document.getElementById("mus-name").textContent = "CD labeled \"skeptical bobby's theme\"";
+                    document.getElementById("mus-name").textContent = "CD labeled \"skeptical bobby's theme\" (2024)";
                     break;
                 case "bald":
-                    document.getElementById("mus-name").textContent = "CD labeled \"bald bobby's theme\"";
+                    document.getElementById("mus-name").textContent = "CD labeled \"bald bobby's theme\" (2023)";
                     break;
                 case "lost origin":
-                    document.getElementById("mus-name").textContent = "CD labeled \"lost origin\"";
+                    document.getElementById("mus-name").textContent = "CD labeled \"lost origin\" (2022-2025)";
+                    break;
+
+                case "btd cityscape":
+                    disc.src = "../img/shared/disc red.png";
+                    document.getElementById("mus-name").textContent = "PRISTINE CD labeled \"another night with you\" (2026)";
+                    break;
+                case "btd majestic":
+                    disc.src = "../img/shared/disc red.png";
+                    document.getElementById("mus-name").textContent = "PRISTINE CD labeled \"majestic bobby's theme\" (2026)";
+                    break;
+                case "btd main":
+                    document.getElementById("mus-name").textContent = "CD labeled \"a main menu theme\" (2026)";
+                    break;
+                case "robby":
+                    document.getElementById("mus-name").textContent = "CD labeled \"robby's theme\" (2026)";
+                    break;
+                case "hopes":
+                    disc.src = "../img/shared/disc red.png";
+                    document.getElementById("mus-name").textContent = "PRISTINE CD labeled \"bobby's hopes (instrumental)\" (2026)";
+                    break;
+                case "the depiction of life":
+                    disc.src = "../img/shared/disc red.png";
+                    document.getElementById("mus-name").textContent = "PRISTINE CD labeled \"bobby's depiction of life\" (2026)";
                     break;
             }
         };
     }
+
+    /**
+     * <button id="cd-btd cityscape">PRISTINE CD labeled "another night with you" (ß3000)</button>
+    <button id="cd-btd majestic">PRISTINE CD labeled "majestic bobby's theme" (ß2750)</button>
+    <button id="cd-btd main">CD labeled "a main menu theme" (ß2500)</button>
+    <button id="cd-robby">CD labeled "robby's theme" (ß1500)</button>
+     * 
+     * 
+     */
 
     cdPlayer.onplay = () => {
         playingMusic = true;
@@ -341,15 +374,31 @@ function playDialogue(text = "", speed = 0, story = false) {
                 clearInterval(playing);
             }
             if (cont) {
+                var sound = "dialogue";
                 var char = text.charAt(i);
-                if (char == "%")
+                if (char == "%") {
                     char = "\n";
-                if (char == "`")
+                    sound = "none";
+                }
+                if (char == "`") {
                     char = "";
+                    sound = "none";
+                }
                 if (char == "⚠") {
                     char = "";
                     content = "";
+                    sound = "none";
                 }
+                if (char == "?" || char == "!" || char == ".") {
+                    sound = "dialogue_alt";
+                }
+                if (sound != "none")
+                {
+                    playSound(sound, 1);
+                    //var audio = new Audio("../snd/" + sound + ".mp3");
+                    //audio.play();
+                }
+                
                 content = content + char;
 
                 // console.log(content);

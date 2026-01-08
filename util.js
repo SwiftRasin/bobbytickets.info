@@ -29,10 +29,22 @@ var deals = {
     "cd-happy": {bought: false, cost: 1000},
     "cd-skeptical": {bought: false, cost: 50},
     "cd-bald": {bought: false, cost: 25},
-    "cd-lost origin": {bought: false, cost: 2500}
+    "cd-lost origin": {bought: false, cost: 2500},
+    "cd-btd cityscape": {bought: false, cost: 3000},
+    "cd-btd majestic": {bought: false, cost: 2750},
+    "cd-btd main": {bought: false, cost: 2500},
+    "cd-robby": {bought: false, cost: 1500},
+    "cd-hopes": {bought: false, cost: 2500},
+    "cd-the depiction of life": {bought: false, cost: 3000}
 }
 
-
+function playSound(path, volume) //path is within the context of the 'snd' folder, and without the .mp3 extension.
+{
+    var audio = new Audio("../../../../snd/" + path + ".mp3"); //goes very far to make sure no shenanigans occur..
+    audio.volume = volume;
+    audio.playbackRate = 1;
+    audio.play();
+}
 
 function init_deals() {
     console.log("initializing deals...");

@@ -54,8 +54,6 @@ var alltickets = [];
 function updChecklist(item, add, series)
 {
     var itemName = series + "/" + item;
-    // console.log(item+add+series);
-    // console.log(itemName);
     if (add && checklist.indexOf(itemName) == -1)
     {
         checklist.push(itemName);
@@ -69,7 +67,6 @@ function updChecklist(item, add, series)
         checklist.splice(checklist.indexOf(itemName), 1);
     }
     save_list();
-    //console.log(checklist);
 }
 
 function check_list(item)
