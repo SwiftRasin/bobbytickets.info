@@ -1,5 +1,6 @@
 var isChecklist = false;
 var initalized = false;
+var hoveringElement;
 
 WebFont.load({
     google: {
@@ -90,6 +91,12 @@ function draw() {
         init_deals();
         init_secrets();
     }
+    if (hoveringElement != undefined)
+    {
+        //1.2
+        var sz = hoveringElement.dataset.w*1.2;
+        hoveringElement.width += (sz - hoveringElement.width)/5;
+    }
 }
 
 function subpage(dir)
@@ -161,6 +168,7 @@ function bar()
     div.appendChild(createBarOption("history", "history/history.html",90,"history"));
     div.appendChild(createBarOption("misc", "misc/misc.html",90,"misc"));
     div.appendChild(createBarOption("question", "question/question.html",90,"question"));
+    div.appendChild(createBarOption("question-old", "beyond/beyond.html",90,"beyond"));
     // div.appendChild(createBarOption("question", "question/question.html",90,"question"));
 
     container.appendChild(div);
@@ -175,6 +183,7 @@ function createBarOption(img,page,width,tooltip)
     option.width = width;
     option.src = "../img/shared/"+ img +".png";
     option.dataset.page = page;
+    // option.dataset.curW = width; //!redundant
     option.dataset.w = width;
     option.title = tooltip;
     option.onerror = function()
@@ -183,11 +192,12 @@ function createBarOption(img,page,width,tooltip)
     }
     option.onmouseover = function()
     {
-        this.width = this.dataset.w*1.2;
+        hoveringElement = this;
     }
     option.onmouseleave = function()
     {
         this.width = this.dataset.w;
+        hoveringElement = undefined;
     }
     option.onclick = function()
     {

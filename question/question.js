@@ -171,17 +171,17 @@ function setup() {
 
                 case "btd cityscape":
                     disc.src = "../img/shared/disc red.png";
-                    document.getElementById("mus-name").textContent = "PRISTINE CD labeled \"another night with you\" (2026)";
+                    document.getElementById("mus-name").textContent = "PRISTINE CD labeled \"another night with you\" (2025)";
                     break;
                 case "btd majestic":
                     disc.src = "../img/shared/disc red.png";
-                    document.getElementById("mus-name").textContent = "PRISTINE CD labeled \"majestic bobby's theme\" (2026)";
+                    document.getElementById("mus-name").textContent = "PRISTINE CD labeled \"majestic bobby's theme\" (2025)";
                     break;
                 case "btd main":
-                    document.getElementById("mus-name").textContent = "CD labeled \"a main menu theme\" (2026)";
+                    document.getElementById("mus-name").textContent = "CD labeled \"a main menu theme\" (2025)";
                     break;
                 case "robby":
-                    document.getElementById("mus-name").textContent = "CD labeled \"robby's theme\" (2026)";
+                    document.getElementById("mus-name").textContent = "CD labeled \"robby's theme\" (2025)";
                     break;
                 case "hopes":
                     disc.src = "../img/shared/disc red.png";
@@ -253,6 +253,12 @@ function draw() {
     // if (discDeg < 0)
     //     discDeg += 360;
     disc.style = "transform: rotate(" + discDeg + "deg);"
+    if (hoveringElement != undefined)
+    {
+        //1.2
+        var sz = hoveringElement.dataset.w*1.2;
+        hoveringElement.width += (sz - hoveringElement.width)/5;
+    }
 }
 
 function talkButton() {
